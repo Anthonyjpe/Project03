@@ -9,19 +9,23 @@ public class Address implements Comparable<Address>
     private boolean direction; //TRUE, 1 = east, FALSE, 0 = south
     private int houseNum; //house numbers are multiples of 10, starting at 100.  However, there are no houses at the multiples of 100s, as the first house on each street would be, for example, 110.
     private int streetNum; //street numbers start at 1, and go
+    protected int orderTime;
+
     private static final int DISTRIBUTION_HOUSENUM = 910;
     private static final int DISTRIBUTION_STREETNUM = 9;
 
     Random rand = new Random();
+    Time time = new Time();
 
     protected Address()
     {
         direction = rand.nextBoolean();
         houseNum = getRandomHouseNum();
         streetNum = getRandomStreetNum();
+        orderTime = Integer.parseInt(time.toString());
     }
 
-    protected Address(int houseNum, boolean direction, int streetNum)
+    protected Address(int houseNum, boolean direction, int streetNum, int orderTime)
     {
      if(houseNum >= 0 && houseNum < 2000)
         this.houseNum = houseNum;
@@ -30,6 +34,9 @@ public class Address implements Comparable<Address>
 
      if(streetNum >= 0 && streetNum < 20)
          this.streetNum = streetNum;
+
+     if(orderTime >= 1000 && orderTime <= 1900)
+         this.orderTime = orderTime;
     }
 
     private int getRandomNumberInRange(int min, int max)

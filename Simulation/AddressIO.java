@@ -24,7 +24,8 @@ public class AddressIO
                 String value[] = line.split(" ");
                 int houseNum = Integer.parseInt(value[0]);
                 int streetNum = Integer.parseInt(value[2]);
-                priorityQueue.add(new Address(houseNum, value[1].compareTo("East") == 0, streetNum));
+                int orderTime = Integer.parseInt(value[3]);
+                priorityQueue.add(new Address(houseNum, value[1].compareTo("East") == 0, streetNum, orderTime));
             }
         }
         catch (IOException e)
@@ -38,10 +39,11 @@ public class AddressIO
     {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(new File(filename)));
-            for (int i = 0; i < numberAddresses; i++)
+            for (int i = 0; i < numberAddresses; i++) //Added time alongside of address creation
             {
                 Address address = new Address();
-                writer.write(address.toString() + "\n");
+                Time time = new Time();
+                writer.write(address.toString() + " " + address.orderTime + "\n");
             }
             writer.flush();
             writer.close();

@@ -1,100 +1,100 @@
-410 East 12
-470 South 6
-310 East 5
-1360 East 4
-830 East 6
-190 South 11
-1710 South 6
-350 East 1
-910 East 1
-1480 East 3
-410 South 20
-810 South 15
-510 East 16
-950 South 1
-1340 South 11
-1810 South 10
-120 South 12
-1730 South 2
-860 East 17
-1720 South 1
-1480 South 3
-20 East 18
-90 South 3
-310 East 1
-820 South 8
-720 East 6
-620 South 18
-420 East 8
-1990 South 8
-1910 East 0
-1520 South 20
-260 East 2
-1910 South 8
-1490 South 9
-1990 South 7
-180 South 8
-120 South 12
-1010 East 0
-690 East 18
-350 East 12
-1440 East 0
-760 East 7
-1140 East 20
-640 East 17
-1620 South 15
-810 East 11
-1320 East 19
-940 East 5
-1710 East 12
-70 East 13
-1110 South 5
-1790 East 20
-1310 South 11
-220 South 5
-420 East 8
-710 South 6
-420 East 7
-1680 South 2
-550 South 18
-580 East 16
-1310 South 15
-940 South 4
-1230 South 7
-510 East 7
-1720 East 20
-1460 East 19
-1850 East 19
-40 South 13
-1630 East 11
-1610 East 13
-230 East 20
-1410 South 13
-1840 South 16
-1610 East 3
-450 East 7
-1080 East 4
-430 East 0
-1680 East 0
-1540 South 3
-810 East 8
-1050 East 20
-1910 East 5
-1980 East 4
-1710 South 12
-1560 East 4
-640 South 20
-80 East 14
-760 South 18
-530 East 10
-1330 East 18
-1190 East 13
-1840 East 19
-370 South 2
-910 East 9
-1390 South 6
-1420 South 13
-110 East 8
-1260 East 10
-560 East 10
-1880 East 4
+590 South 18 1733
+230 East 3 1043
+1210 East 8 1307
+1740 East 6 1830
+410 South 7 1625
+550 East 18 1445
+240 East 16 1201
+720 East 0 1600
+570 South 7 1022
+70 South 3 1035
+1540 South 11 1225
+390 East 20 1147
+1820 East 2 1937
+1080 South 4 1051
+1170 South 3 1153
+1430 East 19 1206
+910 South 6 1511
+1660 East 4 1812
+710 East 19 1559
+370 South 19 1831
+360 East 10 1616
+560 South 2 1626
+1520 South 11 1709
+640 South 11 1819
+940 East 19 1438
+120 South 9 1620
+1620 East 11 1355
+1380 East 15 1641
+1860 East 0 1533
+1270 South 5 1819
+1350 South 15 1148
+490 South 20 1605
+370 South 14 1329
+280 South 17 1046
+1650 South 3 1539
+650 East 5 1019
+610 South 7 1200
+1010 South 8 1629
+50 South 13 1208
+1310 South 6 1054
+1260 East 4 1121
+590 South 3 1223
+1180 East 10 1859
+10 East 19 1715
+970 East 5 1141
+1690 East 9 1147
+1910 East 9 1526
+1390 South 5 1422
+930 South 14 1700
+1780 South 0 1559
+1580 East 9 1040
+170 East 10 1138
+1270 East 13 1322
+1440 East 2 1740
+760 East 4 1251
+1810 East 17 1208
+250 East 13 1047
+1970 South 19 1832
+950 South 2 1443
+1650 South 7 1914
+1310 South 12 1253
+1110 East 14 1846
+1040 East 18 1338
+170 South 9 1349
+1910 East 4 1454
+830 South 15 1247
+360 East 19 1015
+610 South 5 1322
+550 East 14 1650
+1280 East 18 1613
+1030 South 2 1600
+820 South 20 1523
+1610 East 2 1219
+470 East 3 1440
+1760 South 17 1436
+440 South 1 1153
+1960 South 15 1210
+190 East 13 1604
+970 East 5 1821
+660 South 17 1104
+280 East 19 1107
+960 East 14 1044
+1820 South 17 1658
+1420 East 11 1421
+1710 South 10 1546
+810 South 5 1133
+710 East 13 1051
+420 South 7 1724
+630 South 11 1147
+850 South 12 1751
+1630 East 11 1304
+140 East 16 1201
+1450 South 5 1229
+990 South 10 1737
+370 South 19 1057
+1810 South 13 1054
+670 South 6 1358
+1910 East 17 1626
+1150 South 10 1727
+510 East 13 1008

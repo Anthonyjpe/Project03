@@ -66,8 +66,9 @@ public class Neighborhood
                 String line = scanner.nextLine();
                 String address[] = line.split(" ");
                 int houseNum = Integer.parseInt(address[0]);
-                int streetNum = Integer.parseInt(address[2]);
-                add(new Address(houseNum,address[1].compareTo("East") == 0, streetNum));
+                int streetNum = Integer.parseInt(address[1]);
+                int orderTime = Integer.parseInt(address[2]);
+                add(new Address(houseNum,address[1].compareTo("East") == 0, streetNum, orderTime));
             }
         }
         catch (IOException e)
