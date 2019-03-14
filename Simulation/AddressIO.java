@@ -43,7 +43,7 @@ public class AddressIO
             {
                 Address address = new Address();
                 Time time = new Time();
-                writer.write(address.toString() + " " + address.orderTime + "\n");
+                writer.write(address.writeAddress());
             }
             writer.flush();
             writer.close();

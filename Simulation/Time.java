@@ -17,7 +17,8 @@ public class Time { //REMEMBER: This is Military time; meaning deliveries are fr
 
     protected Time(){
         hour = getRandomHour();
-        minute = getRandomMinute();
+        if(hour < 900)
+            minute = getRandomMinute();
     }
 
     protected int getRandomHour(){
