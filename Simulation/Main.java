@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args)
     {
         // Write 100 random addresses to a file
-      //  AddressIO.writeAddresses(AddressIO.FILE, 100);
+        AddressIO.writeAddresses(AddressIO.FILE, 100);
 
         // Read the addresses from the file and place them in a PriorityQueue
         PriorityQueue<Address> addresses = AddressIO.readAddresses(AddressIO.FILE);
@@ -19,11 +19,6 @@ public class Main {
         Neighborhood neighborhood = new Neighborhood();
         neighborhood.generateNeighborhood(addresses);
         neighborhood.printNeighborhood();
-
-        //PriorityQueue<Address> addresses2 = AddressIO.readAddresses(AddressIO.FILE);
-        while(addresses.size() > 0) {
-            System.out.println(addresses.poll());
-        }
     }
 }
 
