@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="545cb410-b20b-4db8-b939-f5f95e43c616" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Simulation/Truck.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simulation/AddressList100.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/AddressList100.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simulation/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simulation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simulation/Neighborhood.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Neighborhood.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project03/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project03/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project03/Simulation/AddressList100.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project03/Simulation/AddressList100.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project03/Simulation/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project03/Simulation/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project03/Simulation/Neighborhood$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project03/Simulation/Neighborhood$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project03/Simulation/Neighborhood.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project03/Simulation/Neighborhood.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Truck.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Truck.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,12 +16,13 @@
     <session id="1457534049">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="15" />
+          <entry key="project.closed" value="17" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.1" value="8" />
-          <entry key="project.open.time.7" value="5" />
+          <entry key="project.open.time.1" value="9" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.7" value="6" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="15" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -48,13 +40,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="3735" />
+          <entry key="java" value="5492" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3735" />
+          <entry key="JAVA" value="5492" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
@@ -65,7 +57,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Simulation/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
+            <state relative-caret-position="345">
               <caret line="23" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
@@ -83,10 +75,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Simulation/Neighborhood.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="56" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="1455">
+              <caret line="111" column="21" selection-start-line="111" selection-start-column="21" selection-end-line="111" selection-end-column="21" />
               <folding>
+                <element signature="e#1404#1405#0" expanded="true" />
                 <element signature="e#1437#1438#0" expanded="true" />
+                <element signature="e#3108#3109#0" expanded="true" />
+                <element signature="e#3145#3146#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -104,22 +99,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Simulation/Truck.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="109" column="21" selection-start-line="109" selection-start-column="21" selection-end-line="109" selection-end-column="21" />
+            <state relative-caret-position="2269">
+              <caret line="181" column="54" lean-forward="true" selection-start-line="181" selection-start-column="54" selection-end-line="181" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5723#5724#0" expanded="true" />
-                <element signature="e#5755#5756#0" expanded="true" />
-                <element signature="e#5802#5803#0" expanded="true" />
-                <element signature="e#5844#5845#0" expanded="true" />
-                <element signature="e#5877#5878#0" expanded="true" />
-                <element signature="e#5909#5910#0" expanded="true" />
-                <element signature="e#5956#5957#0" expanded="true" />
-                <element signature="e#5998#5999#0" expanded="true" />
-                <element signature="e#6037#6038#0" expanded="true" />
-                <element signature="e#6069#6070#0" expanded="true" />
-                <element signature="e#6122#6123#0" expanded="true" />
-                <element signature="e#6164#6165#0" expanded="true" />
+                <element signature="e#8842#8843#0" expanded="true" />
+                <element signature="e#8874#8875#0" expanded="true" />
+                <element signature="e#8921#8922#0" expanded="true" />
+                <element signature="e#8963#8964#0" expanded="true" />
+                <element signature="e#8996#8997#0" expanded="true" />
+                <element signature="e#9028#9029#0" expanded="true" />
+                <element signature="e#9075#9076#0" expanded="true" />
+                <element signature="e#9117#9118#0" expanded="true" />
+                <element signature="e#9156#9157#0" expanded="true" />
+                <element signature="e#9188#9189#0" expanded="true" />
+                <element signature="e#9241#9242#0" expanded="true" />
+                <element signature="e#9283#9284#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,15 +158,16 @@
         <option value="$PROJECT_DIR$/Simulation/Address.java" />
         <option value="$PROJECT_DIR$/Simulation/DirectMove.java" />
         <option value="$PROJECT_DIR$/Simulation/Move.java" />
-        <option value="$PROJECT_DIR$/Simulation/Neighborhood.java" />
         <option value="$PROJECT_DIR$/Simulation/Main.java" />
         <option value="$PROJECT_DIR$/Simulation/Direction.java" />
+        <option value="$PROJECT_DIR$/Simulation/Neighborhood.java" />
         <option value="$PROJECT_DIR$/Simulation/Truck.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="65" />
+    <option name="x" value="4" />
+    <option name="y" value="85" />
     <option name="width" value="1280" />
     <option name="height" value="607" />
   </component>
@@ -196,8 +192,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -214,6 +208,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -275,10 +271,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="84" y="65" width="1280" height="607" extended-state="0" />
+    <frame x="4" y="85" width="1280" height="607" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3101777" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.32471728" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -314,7 +310,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Simulation/Truck.java</url>
-          <line>24</line>
+          <line>25</line>
           <properties />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
@@ -341,6 +337,13 @@
     <entry file="file://$PROJECT_DIR$/README-Sprint2.md">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/Simulation/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Simulation/AddressList100.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -348,26 +351,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Simulation/Address.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Simulation/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Simulation/Neighborhood.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        <state relative-caret-position="1455">
+          <caret line="111" column="21" selection-start-line="111" selection-start-column="21" selection-end-line="111" selection-end-column="21" />
           <folding>
+            <element signature="e#1404#1405#0" expanded="true" />
             <element signature="e#1437#1438#0" expanded="true" />
+            <element signature="e#3108#3109#0" expanded="true" />
+            <element signature="e#3145#3146#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -379,24 +371,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Simulation/Address.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Simulation/Truck.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="109" column="21" selection-start-line="109" selection-start-column="21" selection-end-line="109" selection-end-column="21" />
+        <state relative-caret-position="2269">
+          <caret line="181" column="54" lean-forward="true" selection-start-line="181" selection-start-column="54" selection-end-line="181" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5723#5724#0" expanded="true" />
-            <element signature="e#5755#5756#0" expanded="true" />
-            <element signature="e#5802#5803#0" expanded="true" />
-            <element signature="e#5844#5845#0" expanded="true" />
-            <element signature="e#5877#5878#0" expanded="true" />
-            <element signature="e#5909#5910#0" expanded="true" />
-            <element signature="e#5956#5957#0" expanded="true" />
-            <element signature="e#5998#5999#0" expanded="true" />
-            <element signature="e#6037#6038#0" expanded="true" />
-            <element signature="e#6069#6070#0" expanded="true" />
-            <element signature="e#6122#6123#0" expanded="true" />
-            <element signature="e#6164#6165#0" expanded="true" />
+            <element signature="e#8842#8843#0" expanded="true" />
+            <element signature="e#8874#8875#0" expanded="true" />
+            <element signature="e#8921#8922#0" expanded="true" />
+            <element signature="e#8963#8964#0" expanded="true" />
+            <element signature="e#8996#8997#0" expanded="true" />
+            <element signature="e#9028#9029#0" expanded="true" />
+            <element signature="e#9075#9076#0" expanded="true" />
+            <element signature="e#9117#9118#0" expanded="true" />
+            <element signature="e#9156#9157#0" expanded="true" />
+            <element signature="e#9188#9189#0" expanded="true" />
+            <element signature="e#9241#9242#0" expanded="true" />
+            <element signature="e#9283#9284#0" expanded="true" />
           </folding>
         </state>
       </provider>
