@@ -18,6 +18,7 @@ public class Neighborhood
     static final int BLOCK_WIDTH = 40;
 
     private String[][] grid;
+    private Truck truck[]; // multiple trucks can be owned
 
     public Neighborhood()
     {
@@ -52,6 +53,9 @@ public class Neighborhood
         grid[91][90] = "& ";
     }
 
+    public String getGridMarker(int x,int y) {
+        return grid[x][y];
+    }
 
     public void generateNeighborhood(String filename)
     {
@@ -102,6 +106,10 @@ public class Neighborhood
             grid[ad.getHouseNum()/10][ad.getStreetNum()*10] = "x ";
         else
             grid[ad.getStreetNum()*10][ad.getHouseNum()/10] = "x ";
+    }
+
+    public void addTruck(Truck truck){
+        this.truck[0] = truck;
     }
 
     public void printNeighborhood()
