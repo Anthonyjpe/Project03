@@ -21,8 +21,8 @@ public class Main {
         neighborhood.printNeighborhood();
 
         Truck truck = new Truck(neighborhood);
-        System.out.println(truck.route(addresses));
-        System.out.println("cat");
+        System.out.println(truck.route(addresses) + " ticks moved");
+
     }
 }
 

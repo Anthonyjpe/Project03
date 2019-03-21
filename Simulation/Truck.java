@@ -33,16 +33,16 @@ public class Truck {
 
                 if(partial != 0){ //Finish moving to corner
                     if(d == Direction.North)
-                        for(;partial != 0; partial--)
+                        for(;partial > 0; partial--)
                             y--;
                     else if (d == Direction.South)
-                        for(;partial != 0; partial--)
+                        for(;partial > 0; partial--)
                             y++;
                     else if (d == Direction.East)
-                        for(;partial != 0; partial--)
+                        for(;partial > 0; partial--)
                             x++;
                     else if (d == Direction.West)
-                        for(;partial != 0; partial--)
+                        for(;partial > 0; partial--)
                             x--;
 
                 }
@@ -82,7 +82,7 @@ public class Truck {
                         else { // Y move partially up, logs into partial
                             for(int i = 0; y != dY; i++) {
                                 y--;
-                                partial = 10 - i;
+                                partial = 9 - i;
                             }
                         }
                     }
@@ -116,7 +116,7 @@ public class Truck {
                         else { // Y move partially up, logs into partial
                             for(int i = 0; y != dY; i++) {
                                 y++;
-                                partial = 10 - i;
+                                partial = 9 - i;
                             }
                         }
                     }
@@ -150,7 +150,7 @@ public class Truck {
                         else { // Y move partially up, logs into partial
                             for(int i = 0; x != dX; i++) {
                                 x++;
-                                partial = 10 - i;
+                                partial = 9 - i;
                             }
                         }
                     }
@@ -184,7 +184,7 @@ public class Truck {
                         else { // Y move partially up, logs into partial
                             for(int i = 0; x != dX; i++) {
                                 x--;
-                                partial = 10 - i;
+                                partial = 9 - i;
                             }
                         }
                     }
