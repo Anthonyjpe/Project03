@@ -1,4 +1,3 @@
-package Simulation;
 
 
 import java.util.Random;

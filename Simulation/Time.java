@@ -1,5 +1,3 @@
-package Simulation;
-
 import java.util.Random;
 
 public class Time { //REMEMBER: This is Military time; meaning deliveries are from 1000 - 1900

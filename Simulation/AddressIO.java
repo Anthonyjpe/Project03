@@ -1,5 +1,3 @@
-package Simulation;
-
 
 import java.io.BufferedWriter;
 import java.io.File;
