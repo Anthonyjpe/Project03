@@ -1,3 +1,5 @@
+package Simulation;
+
 import java.util.PriorityQueue;
 
 public class Main {
@@ -12,13 +14,16 @@ public class Main {
         PriorityQueue<Address> addresses = AddressIO.readAddresses(AddressIO.FILE);
 
         // Draw the neighborhood with the addresses and distribution center shown
-        Neighborhood.drawNeighborhood(addresses);
+        /*Neighborhood.drawNeighborhood(addresses);
         Neighborhood neighborhood = new Neighborhood();
         neighborhood.generateNeighborhood(addresses);
-        neighborhood.printNeighborhood();
+        neighborhood.printNeighborhood();*/
+        Neighborhood neighborhood = new Neighborhood();
+        NeighborhoodGUI simulation = new NeighborhoodGUI(neighborhood);
+        simulation.start();
 
-        Truck truck = new Truck(neighborhood);
-        System.out.println(truck.route(addresses) + " ticks moved");
+        /*Truck truck = new Truck(neighborhood);
+        System.out.println(truck.route(addresses) + " ticks moved");*/
 
     }
 }
