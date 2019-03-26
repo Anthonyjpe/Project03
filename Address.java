@@ -150,6 +150,6 @@ public class Address implements Comparable<Address> {
     }
 
     public String writeAddress() {
-        return Integer.toString(getHouseNum()) + " " + directionToString() + " " + Integer.toString(getStreetNum()) + " " + orderTime + toString() + "\n";
+        return Integer.toString(getHouseNum()) + " " + directionToString() + " " + Integer.toString(getStreetNum()) + " " + orderTime;
     }
 }
