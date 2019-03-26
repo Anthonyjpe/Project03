@@ -45,6 +45,6 @@ public class Order {
 
     @Override
     public String toString() {
-        return sandwich + " " + chips + " " + drink;
+        return sandwich + " " + chip + " " + drink;
     }
 }
