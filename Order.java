@@ -2,28 +2,28 @@ import java.util.Random;
 
 public class Order {
 
-    Sandwich sandwich;
-    Chips chips;
+    Sandwiches sandwich;
+    Chips chip;
     Drinks drink;
 
     static Random rand = new Random();
 
     protected Order(){
-        sandwich = randomEnum(Sandwich.class);
-        chips = randomEnum(Chips.class);
+        sandwich = randomEnum(Sandwiches.class);
+        chip = randomEnum(Chips.class);
         drink = randomEnum(Drinks.class);
     }
 
-    public Sandwich getSandwich() {
+    public Sandwiches getSandwich() {
         return sandwich;
     }
 
-    public void setSandwich(Sandwich sandwich) {
+    public void setSandwich(Sandwiches sandwich) {
         this.sandwich = sandwich;
     }
 
     public void setChips(Chips chips) {
-        this.chips = chips;
+        this.chip = chips;
     }
 
     public Drinks getDrink() {
@@ -35,7 +35,7 @@ public class Order {
     }
 
     public Chips getChips() {
-        return chips;
+        return chip;
     }
 
     public static <T extends Enum<?>> T randomEnum(Class<T> clazz){

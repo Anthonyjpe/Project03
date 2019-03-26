@@ -41,6 +41,7 @@ public class AddressIO
             {
                 Address address = new Address();
                 Time time = new Time();
+                Order order = new Order();
                 writer.write(address.writeAddress());
             }
             writer.flush();
