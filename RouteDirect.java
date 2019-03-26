@@ -1,26 +1,12 @@
 import java.util.Iterator;
 import java.util.PriorityQueue;
 
-public class Truck {
-    private int xLocation;
-    private int yLocation;
-    private Direction direction;
-    private Neighborhood neighborhood;
-    private Route route;
-
-    Truck(Neighborhood neighborhood){
-        xLocation = 90;
-        yLocation = 91;
-        this.neighborhood = neighborhood;
-        direction = Direction.Null;
-        route = new RouteDirect();
-    }
-
-    public int route(PriorityQueue<Address> addresses){// 204 tickCOunt breaks, dx - x should stop at a mutiple of 10 (Corner) but does not
-       return this.route.route(addresses,this);
-       /* int x = xLocation;
-        int y = yLocation;
-        Direction d = direction;
+public class RouteDirect implements Route {
+    @Override
+    public int route(PriorityQueue<Address> addresses, Truck truck) {
+        int x = truck.getXLocation();
+        int y = truck.getYLocation();
+        Direction d = truck.getDirection();
         int tickCount = 0; //Number of moves
         int partial = 0; // Stores number of moves left to reach a corner
 
@@ -70,7 +56,7 @@ public class Truck {
                         else if( x > dX) //To the left
                             d = Direction.West;
                         else { //It is on the correct X level already
-                            if (neighborhood.getGridMarker(x + 1,y) != "  ") // If the East block is not out of bounds
+                            if (truck.getNeighborhood().getGridMarker(x + 1,y) != "  ") // If the East block is not out of bounds
                                 d = Direction.East;
                             else //If the east block is out of bounds, the right block is not
                                 d = Direction.West;
@@ -104,7 +90,7 @@ public class Truck {
                         else if( x > dX) //To the left
                             d = Direction.West;
                         else { //It is on the correct X level already
-                            if (neighborhood.getGridMarker(x + 1,y) != "  ") // If the East block is not out of bounds
+                            if (truck.getNeighborhood().getGridMarker(x + 1,y) != "  ") // If the East block is not out of bounds
                                 d = Direction.East;
                             else //If the east block is out of bounds, the right block is not
                                 d = Direction.West;
@@ -138,7 +124,7 @@ public class Truck {
                         else if( y > dY) //To the left
                             d = Direction.North;
                         else { //It is on the correct X level already
-                            if (neighborhood.getGridMarker(x ,y + 1) != "  ") // If the East block is not out of bounds
+                            if (truck.getNeighborhood().getGridMarker(x ,y + 1) != "  ") // If the East block is not out of bounds
                                 d = Direction.South;
                             else //If the east block is out of bounds, the right block is not
                                 d = Direction.North;
@@ -172,7 +158,7 @@ public class Truck {
                         else if( y > dY) //To the left
                             d = Direction.North;
                         else { //It is on the correct X level already
-                            if (neighborhood.getGridMarker(x ,y + 1) != "  ") // If the East block is not out of bounds
+                            if (truck.getNeighborhood().getGridMarker(x ,y + 1) != "  ") // If the East block is not out of bounds
                                 d = Direction.South;
                             else //If the east block is out of bounds, the right block is not
                                 d = Direction.North;
@@ -193,43 +179,12 @@ public class Truck {
             }
         }
 
-        return tickCount;*/
+        return tickCount;
+
     }
 
-    public int getXLocation() {
-        return xLocation;
+    @Override
+    public String toString() {
+        return "Direct";
     }
-
-    public void setXLocation(int xLocation) {
-        this.xLocation = xLocation;
-    }
-
-    public int getYLocation() {
-        return yLocation;
-    }
-
-    public void setYLocation(int yLocation) {
-        this.yLocation = yLocation;
-    }
-
-    public Direction getDirection() {
-        return direction;
-    }
-
-    public void setDirection(Direction direction) {
-        this.direction = direction;
-    }
-
-    public Neighborhood getNeighborhood(){
-        return neighborhood;
-    }
-
-    public void setRoute(Route route){
-        this.route = route;
-    }
-
-    public String seeRoute(){
-        return this.route.toString();
-    }
-
 }

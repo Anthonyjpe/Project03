@@ -18,10 +18,10 @@ public class Main {
         neighborhood.printNeighborhood();*/
         Neighborhood neighborhood = new Neighborhood();
         NeighborhoodGUI simulation = new NeighborhoodGUI(neighborhood);
-        simulation.start();
+        //simulation.start();
 
-        /*Truck truck = new Truck(neighborhood);
-        System.out.println(truck.route(addresses) + " ticks moved");*/
+        Truck truck = new Truck(neighborhood);
+        System.out.println(truck.route(addresses) + " ticks moved with " + truck.seeRoute() + " route");
 
     }
 }
