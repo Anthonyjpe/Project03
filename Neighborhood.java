@@ -1,5 +1,3 @@
-package Simulation;
-
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -17,21 +15,24 @@ public class Neighborhood
     private static final int HEIGHT = 782, WIDTH = 761;
     private static final int MARKER_SIZE = 5;
     private static final int BLOCK_WIDTH = 40;
+    private static final int NEIGHBORHOOD_DIMENSIONS = 201;
+    private static final int DISTRIBUTION_CENTER_STREET = 90;
+    private static final int DISTRIBUTION_CENTER_NUM = 91;
 
     private String[][] grid;
     private Truck truck[]; // multiple trucks can be owned
 
     public Neighborhood()
     {
-        grid = new String[201][201];
+        grid = new String[NEIGHBORHOOD_DIMENSIONS][NEIGHBORHOOD_DIMENSIONS];
     }
 
     public void generateNeighborhood()
     {
         // Location of houses, represented as "o"; crossroads as "-"
-        for (int x = 0; x < 201; x++)
+        for (int x = 0; x < NEIGHBORHOOD_DIMENSIONS; x++)
         {
-            for (int y = 0; y < 201; y++)
+            for (int y = 0; y < NEIGHBORHOOD_DIMENSIONS; y++)
             {
                 if (x % 10 == 0)
                 {
@@ -82,7 +83,7 @@ public class Neighborhood
         }
 
         // Location of the distribution center, represented as "&"
-        grid[91][90] = "& ";
+        grid[DISTRIBUTION_CENTER_NUM][DISTRIBUTION_CENTER_NUM] = "& ";
 
     }
 
@@ -96,7 +97,7 @@ public class Neighborhood
             add(iterator.next());
 
         // Location of the distribution center, represented as "&"
-        grid[91][90] = "& ";
+        grid[DISTRIBUTION_CENTER_NUM][DISTRIBUTION_CENTER_STREET] = "& ";
 
     }
 
@@ -116,8 +117,8 @@ public class Neighborhood
     public void printNeighborhood()
     {
         // Print neighborhood
-        for (int x = 0; x < 201; x++) {
-            for (int y = 0; y < 201; y++)
+        for (int x = 0; x < NEIGHBORHOOD_DIMENSIONS; x++) {
+            for (int y = 0; y < NEIGHBORHOOD_DIMENSIONS; y++)
                 System.out.print(grid[x][y]);
             System.out.println();
         }
