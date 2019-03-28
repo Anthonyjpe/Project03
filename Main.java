@@ -23,6 +23,9 @@ public class Main {
         Truck truck = new Truck(neighborhood);
         System.out.println(truck.route(addresses) + " ticks moved with " + truck.seeRoute() + " route");
 
+        truck.setRoute(new RouteRight());
+        System.out.println(truck.route(addresses) + " ticks moved with " + truck.seeRoute() + " route");
+
     }
 }
 
