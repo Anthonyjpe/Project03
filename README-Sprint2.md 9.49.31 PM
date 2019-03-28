@@ -15,7 +15,7 @@ Design (UML) and code(Java) programs that will:
 
 3. Compute a route that the truck must follow to visit each random location in order of order time. Compute and output the length of the truck's route.
 
-4. Display a simulation of the truck's movements in the neighborhood. Truck's initial location is the distribution center.
+4. Display a simulation of the truck's movements in the neighborhood. Simulation.Truck's initial location is the distribution center.
 
 5. Make sure to update the requirements document, UML, and Sprint burndown chart. Standup meetings must be submitted daily.
 
