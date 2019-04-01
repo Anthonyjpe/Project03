@@ -121,4 +121,8 @@ public class Neighborhood
         }
     }
 
+    public int getDistributionCenterNum(){return DISTRIBUTION_CENTER_NUM;}
+
+    public int getDistributionCenterStreet(){return DISTRIBUTION_CENTER_STREET;}
+
 }
