@@ -3,7 +3,7 @@ package Simulation;
 import java.util.Iterator;
 import java.util.PriorityQueue;
 
-public class RouteRight implements Route {
+public class RouteDirectTime implements RouteTime {
 
     @Override
     public int route(PriorityQueue<Address> addresses, Truck truck) {
@@ -23,17 +23,25 @@ public class RouteRight implements Route {
 
                 if(partial != 0){ //Finish moving to corner
                     if(d == Direction.North)
-                        for(;partial > 0; partial--)
+                        for(;partial > 0; partial--) {
+                            tickCount++;
                             y--;
+                        }
                     else if (d == Direction.South)
-                        for(;partial > 0; partial--)
+                        for(;partial > 0; partial--) {
+                            tickCount++;
                             y++;
+                        }
                     else if (d == Direction.East)
-                        for(;partial > 0; partial--)
+                        for(;partial > 0; partial--) {
+                            tickCount++;
                             x++;
+                        }
                     else if (d == Direction.West)
-                        for(;partial > 0; partial--)
+                        for(;partial > 0; partial--) {
+                            tickCount++;
                             x--;
+                        }
 
                 }
 
@@ -44,18 +52,13 @@ public class RouteRight implements Route {
                     tickCount++;
                 } else if(d == Direction.North){ // Y is correct (1), Y is above full (2), reverse (3), y is above partially (4)
                     if(y == dY){ //On this Y level *****1*****
-                        d = Direction.East;
-                        if(x > dX) { //To the Left
-                            for(int i = 0; i < 10; i++){
-                                tickCount++;
-                                x++;
-                            }
-                            d = Direction.South;
-                            for(int i = 0; i < 10; i++){
-                                tickCount++;
-                                y++;
-                            }
+                        if(x < dX) { //To the right
+                            d = Direction.East;
+                            tickCount += 2;
+                        }
+                        else if( x > dX) { //To the left
                             d = Direction.West;
+                            tickCount += 4;
                         }
                     } else if( y - dY >= 10){ // Above this Y level by a full block or more *****2*****
                         for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
@@ -63,34 +66,32 @@ public class RouteRight implements Route {
                             y--;
                         }
                     } else if( y < dY){ // Need to be facing south *****3*****
-                        //To the right
-                        d = Direction.East;
-                        for (int i = 0; i < 10; i++) {
-                            tickCount++;
-                            x++;
-                        }
-                        d = Direction.South;
-
-                    } else if (y > dY){ // above this Y level by less than a block *****4*****
                         if(x < dX) { //To the right
-                            for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
-                                tickCount++;
-                                y--;
-                            }
                             d = Direction.East;
+                            tickCount += 2;
                         }
                         else if( x > dX) { //To the left
-                            d = Direction.East;
-                            for (int i = 0; i < 10; i++) {
-                                tickCount++;
-                                x++;
-                            }
-                            d = Direction.South;
-                            for (int i = 0; i < 10; i++) {
-                                tickCount++;
-                                y++;
-                            }
                             d = Direction.West;
+                            tickCount += 4;
+                        }
+                        else { //It is on the correct X level already
+                            if (truck.getNeighborhood().getGridMarker(x + 1,y) != "  ") { // If the East block is not out of bounds
+                                d = Direction.East;
+                                tickCount += 2;
+                            }
+                            else { //If the east block is out of bounds, the right block is not
+                                d = Direction.West;
+                                tickCount += 4;
+                            }
+                        }
+                    } else if (y > dY){ // above this Y level by less than a block *****4*****
+                        if(x < dX) { //To the right
+                            d = Direction.East;
+                            tickCount += 2;
+                        }
+                        else if( x > dX) { //To the left
+                            d = Direction.West;
+                            tickCount += 2;
                         }
                         else { // Y move partially up, logs into partial
                             for(int i = 0; y != dY; i++) {
@@ -100,19 +101,14 @@ public class RouteRight implements Route {
                         }
                     }
                 } else if(d == Direction.South){ // Y is correct (1), Y is below full (2), reverse (3), y is above partially (4)
-                    if(y == dY){ //On this Y level *****1*****
-                        d = Direction.West;
-                        if(x < dX) { //To the right
-                            for(int i = 0; i < 10; i++){
-                                tickCount++;
-                                x--;
-                            }
-                            d = Direction.South;
-                            for(int i = 0; i < 10; i++){
-                                tickCount++;
-                                y++;
-                            }
+                    if(y == dY) { //On this Y level *****1*****
+                        if (x < dX) { //To the right
                             d = Direction.East;
+                            tickCount += 4;
+                        }
+                        else if (x > dX) { //To the left
+                            d = Direction.West;
+                            tickCount += 2;
                         }
                     } else if (y - dY <= -10) { // Below this Y level by a full block or more *****2*****
                         for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
@@ -120,32 +116,32 @@ public class RouteRight implements Route {
                             y++;
                         }
                     } else if (y > dY) { // Need to be facing north *****3*****
-                        d = Direction.West;
-                        for (int i = 0; i < 10; i++) {
-                            tickCount++;
-                            x--;
-                        }
-                        d = Direction.North;
-                    } else { // below this Y level by less than a block *****4*****
-                        if(x < dX) {//To the right
-                            d = Direction.West;
-                            for (int i = 0; i < 10; i++) {
-                                tickCount++;
-                                x--;
-                            }
-                            d = Direction.North;
-                            for (int i = 0; i < 10; i++) {
-                                tickCount++;
-                                y--;
-                            }
+                        if(x < dX) { //To the right
                             d = Direction.East;
+                            tickCount += 4;
                         }
                         else if( x > dX) { //To the left
-                            for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
-                                tickCount++;
-                                y++;
-                            }
                             d = Direction.West;
+                            tickCount += 2;
+                        }
+                        else { //It is on the correct X level already
+                            if (truck.getNeighborhood().getGridMarker(x + 1,y) != "  ") { // If the East block is not out of bounds
+                                d = Direction.East;
+                                tickCount += 4;
+                            }
+                            else { //If the east block is out of bounds, the right block is not
+                                d = Direction.West;
+                                tickCount += 2;
+                            }
+                        }
+                    } else { // below this Y level by less than a block *****4*****
+                        if(x < dX) { //To the right
+                            d = Direction.East;
+                            tickCount += 4;
+                        }
+                        else if( x > dX) { //To the left
+                            d = Direction.West;
+                            tickCount += 2;
                         }
                         else { // Y move partially up, logs into partial
                             for(int i = 0; y != dY; i++) {
@@ -156,18 +152,13 @@ public class RouteRight implements Route {
                     }
                 } else if(d == Direction.East){// X is correct (1), X is below full (2), reverse (3), X is below partially (4)
                     if(x == dX) { //On this X level *****1*****
-                        d = Direction.South;
-                        if(y > dY) { //To the Left
-                            for(int i = 0; i < 10; i++){
-                                tickCount++;
-                                y++;
-                            }
-                            d = Direction.West;
-                            for(int i = 0; i < 10; i++){
-                                tickCount++;
-                                x--;
-                            }
+                        if (y < dY) { //To the right
+                            d = Direction.South;
+                            tickCount += 2;
+                        }
+                        else if (y > dY) { //To the left
                             d = Direction.North;
+                            tickCount += 4;
                         }
                     } else if (x - dX <= -10) { // Below this X level by a full block or more *****2*****
                         for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
@@ -175,32 +166,32 @@ public class RouteRight implements Route {
                             x++;
                         }
                     } else if (x > dX) { // Need to be facing West *****3*****
-                        d = Direction.South;
-                        for (int i = 0; i < 10; i++) {
-                            tickCount++;
-                            y++;
+                        if(y < dY) { //To the right
+                            d = Direction.South;
+                            tickCount += 2;
                         }
-                        d = Direction.West;
+                        else if( y > dY) { //To the left
+                            d = Direction.North;
+                            tickCount += 4;
+                        }
+                        else { //It is on the correct X level already
+                            if (truck.getNeighborhood().getGridMarker(x ,y + 1) != "  ") { // If the East block is not out of bounds
+                                d = Direction.South;
+                                tickCount += 2;
+                            }
+                            else { //If the east block is out of bounds, the right block is not
+                                d = Direction.North;
+                                tickCount += 4;
+                            }
+                        }
                     } else { // below this X level by less than a block *****4*****
                         if (y < dY) { //To the right
-                            for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
-                                tickCount++;
-                                x++;
-                            }
                             d = Direction.South;
+                            tickCount += 2;
                         }
                         else if (y > dY) { //To the left
-                            d = Direction.South;
-                            for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
-                                tickCount++;
-                                y++;
-                            }
-                            d= Direction.West;
-                            for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
-                                tickCount++;
-                                x--;
-                            }
                             d = Direction.North;
+                            tickCount += 4;
                         }
                         else { // Y move partially up, logs into partial
                             for(int i = 0; x != dX; i++) {
@@ -211,51 +202,45 @@ public class RouteRight implements Route {
                     }
                 } else if(d == Direction.West){// X is correct (1), X is above full (2), reverse (3), X is above partially (4)
                     if(x == dX) { //On this X level *****1*****
-                        d = Direction.North;
-                        if(y < dY) { //To the Left
-                            for(int i = 0; i < 10; i++){
-                                tickCount++;
-                                y--;
-                            }
-                            d = Direction.East;
-                            for(int i = 0; i < 10; i++){
-                                tickCount++;
-                                x++;
-                            }
+                        if (y < dY) { //To the right
                             d = Direction.South;
+                            tickCount += 4;
+                        }
+                        else if (y > dY) { //To the left
+                            d = Direction.North;
+                            tickCount += 2;
                         }
                     } else if (x - dX >= 10) { // Above this X level by a full block or more *****2*****
                         for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
                             tickCount++;
                             x--;
                         }
-                    } else if (x < dX) { // Need to be facing East *****3*****
-                        d = Direction.North;
-                        for (int i = 0; i < 10; i++) {
-                            tickCount++;
-                            y--;
+                    } else if (x < dX) { // Need to be facing West *****3*****
+                        if(y < dY) { //To the right
+                            d = Direction.South;
+                            tickCount += 4;
                         }
-                        d = Direction.East;
+                        else if( y > dY) { //To the left
+                            d = Direction.North;
+                            tickCount += 2;
+                        }
+                        else { //It is on the correct X level already
+                            if (truck.getNeighborhood().getGridMarker(x, y + 1) != "  ") { // If the East block is not out of bounds
+                                d = Direction.South;
+                                tickCount += 4;
+                            } else { //If the east block is out of bounds, the right block is not
+                                d = Direction.North;
+                                tickCount += 2;
+                            }
+                        }
                     } else { // above this X level by less than a block *****4*****
                         if (y < dY) { //To the right
-                            d = Direction.North;
-                            for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
-                                tickCount++;
-                                y--;
-                            }
-                            d = Direction.East;
-                            for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
-                                tickCount++;
-                                x++;
-                            }
                             d = Direction.South;
+                            tickCount += 4;
                         }
                         else if (y > dY) { //To the left
-                            for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
-                                tickCount++;
-                                x--;
-                            }
                             d = Direction.North;
+                            tickCount += 2;
                         }
                         else { // Y move partially up, logs into partial
                             for(int i = 0; x != dX; i++) {
@@ -265,6 +250,10 @@ public class RouteRight implements Route {
                         }
                     }
                 }
+
+                if(x == dX && y == dY){
+                    tickCount += 5;
+                }
             }
         }
 
@@ -272,8 +261,5 @@ public class RouteRight implements Route {
 
     }
 
-    @Override
-    public String toString() {
-        return "Right Turn";
-    }
+    public String toString() { return "units of time with Direct route"; }
 }

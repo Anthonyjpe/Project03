@@ -3,7 +3,7 @@ package Simulation;
 import java.util.Iterator;
 import java.util.PriorityQueue;
 
-public class RouteDirect implements Route {
+public class RouteDirectDistance implements RouteDistance {
     @Override
     public int route(PriorityQueue<Address> addresses, Truck truck) {
         int x = truck.getXLocation();
@@ -22,17 +22,25 @@ public class RouteDirect implements Route {
 
                 if(partial != 0){ //Finish moving to corner
                     if(d == Direction.North)
-                        for(;partial > 0; partial--)
+                        for(;partial > 0; partial--) {
+                            tickCount++;
                             y--;
+                        }
                     else if (d == Direction.South)
-                        for(;partial > 0; partial--)
+                        for(;partial > 0; partial--) {
+                            tickCount++;
                             y++;
+                        }
                     else if (d == Direction.East)
-                        for(;partial > 0; partial--)
+                        for(;partial > 0; partial--) {
+                            tickCount++;
                             x++;
+                        }
                     else if (d == Direction.West)
-                        for(;partial > 0; partial--)
+                        for(;partial > 0; partial--) {
+                            tickCount++;
                             x--;
+                        }
 
                 }
 
@@ -187,6 +195,6 @@ public class RouteDirect implements Route {
 
     @Override
     public String toString() {
-        return "Direct";
+        return "ticks traveled with Direct route";
     }
 }

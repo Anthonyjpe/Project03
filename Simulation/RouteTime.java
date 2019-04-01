@@ -1,10 +1,7 @@
 package Simulation;
 
-import Simulation.Address;
-
 import java.util.PriorityQueue;
 
-public interface Route {
+public interface RouteTime {
     public int route(PriorityQueue<Address> addresses, Truck truck);
-
 }

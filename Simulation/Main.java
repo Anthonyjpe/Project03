@@ -23,10 +23,14 @@ public class Main {
         //simulation.start();
 
         Truck truck = new Truck(neighborhood);
-        System.out.println(truck.route(addresses) + " ticks moved with " + truck.seeRoute() + " route");
+        System.out.println(truck.route(addresses) + " " + truck.seeRoute());
+        System.out.println(truck.routeTime(addresses) + " " + truck.seeRouteTime());
 
-        truck.setRoute(new RouteRight());
-        System.out.println(truck.route(addresses) + " ticks moved with " + truck.seeRoute() + " route");
+
+        truck.setRoute(new RouteRightDistance());
+        truck.setRouteTime(new RouteRightTime());
+        System.out.println(truck.route(addresses) + " " + truck.seeRoute());
+        System.out.println(truck.routeTime(addresses) + " " + truck.seeRouteTime());
 
     }
 }
