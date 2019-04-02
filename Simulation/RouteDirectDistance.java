@@ -66,10 +66,19 @@ public class RouteDirectDistance implements RouteDistance {
                         else if( x > dX) //To the left
                             d = Direction.West;
                         else { //It is on the correct X level already
-                            if (truck.getNeighborhood().getGridMarker(x + 1,y) != "  ") // If the East block is not out of bounds
+                            if (truck.getNeighborhood().getGridMarker(x + 1, y) != "  ") { // If the East block is not out of bounds
                                 d = Direction.East;
-                            else //If the east block is out of bounds, the right block is not
+                                for (int i = 0; i < 10; i++) { // Move a full block up (10 ticks)
+                                    tickCount++;
+                                    x++;
+                                }
+                            } else { //If the east block is out of bounds, the right block is not
                                 d = Direction.West;
+                                for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
+                                    tickCount++;
+                                    x--;
+                                }
+                            }
                         }
                     } else if (y > dY){ // above this Y level by less than a block *****4*****
                         if(x < dX) //To the right
@@ -100,10 +109,20 @@ public class RouteDirectDistance implements RouteDistance {
                         else if( x > dX) //To the left
                             d = Direction.West;
                         else { //It is on the correct X level already
-                            if (truck.getNeighborhood().getGridMarker(x + 1,y) != "  ") // If the East block is not out of bounds
+                            if (truck.getNeighborhood().getGridMarker(x + 1,y) != "  ") { // If the East block is not out of bounds
                                 d = Direction.East;
-                            else //If the east block is out of bounds, the right block is not
+                                for (int i = 0; i < 10; i++) { // Move a full block up (10 ticks)
+                                    tickCount++;
+                                    x++;
+                                }
+                            }
+                            else { //If the east block is out of bounds, the right block is not
                                 d = Direction.West;
+                                for (int i = 0; i < 10; i++) { // Move a full block up (10 ticks)
+                                    tickCount++;
+                                    x--;
+                                }
+                            }
                         }
                     } else { // below this Y level by less than a block *****4*****
                         if(x < dX) //To the right
@@ -134,10 +153,20 @@ public class RouteDirectDistance implements RouteDistance {
                         else if( y > dY) //To the left
                             d = Direction.North;
                         else { //It is on the correct X level already
-                            if (truck.getNeighborhood().getGridMarker(x ,y + 1) != "  ") // If the East block is not out of bounds
+                            if (truck.getNeighborhood().getGridMarker(x ,y + 1) != "  ") { // If the East block is not out of bounds
                                 d = Direction.South;
-                            else //If the east block is out of bounds, the right block is not
+                                for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
+                                    tickCount++;
+                                    y++;
+                                }
+                            }
+                            else { //If the east block is out of bounds, the right block is not
                                 d = Direction.North;
+                                for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
+                                    tickCount++;
+                                    y--;
+                                }
+                            }
                         }
                     } else { // below this X level by less than a block *****4*****
                         if (y < dY) //To the right
@@ -168,10 +197,20 @@ public class RouteDirectDistance implements RouteDistance {
                         else if( y > dY) //To the left
                             d = Direction.North;
                         else { //It is on the correct X level already
-                            if (truck.getNeighborhood().getGridMarker(x ,y + 1) != "  ") // If the East block is not out of bounds
+                            if (truck.getNeighborhood().getGridMarker(x ,y + 1) != "  ") { // If the East block is not out of bounds
                                 d = Direction.South;
-                            else //If the east block is out of bounds, the right block is not
+                                for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
+                                    tickCount++;
+                                    y++;
+                                }
+                            }
+                            else { //If the east block is out of bounds, the right block is not
                                 d = Direction.North;
+                                for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
+                                    tickCount++;
+                                    y--;
+                                }
+                            }
                         }
                     } else { // above this X level by less than a block *****4*****
                         if (y < dY) //To the right

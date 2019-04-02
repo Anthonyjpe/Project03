@@ -78,10 +78,18 @@ public class RouteDirectTime implements RouteTime {
                             if (truck.getNeighborhood().getGridMarker(x + 1,y) != "  ") { // If the East block is not out of bounds
                                 d = Direction.East;
                                 tickCount += 2;
+                                for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
+                                    tickCount++;
+                                    x++;
+                                }
                             }
                             else { //If the east block is out of bounds, the right block is not
                                 d = Direction.West;
                                 tickCount += 4;
+                                for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
+                                    tickCount++;
+                                    x--;
+                                }
                             }
                         }
                     } else if (y > dY){ // above this Y level by less than a block *****4*****
@@ -128,10 +136,18 @@ public class RouteDirectTime implements RouteTime {
                             if (truck.getNeighborhood().getGridMarker(x + 1,y) != "  ") { // If the East block is not out of bounds
                                 d = Direction.East;
                                 tickCount += 4;
+                                for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
+                                    tickCount++;
+                                    x++;
+                                }
                             }
                             else { //If the east block is out of bounds, the right block is not
                                 d = Direction.West;
                                 tickCount += 2;
+                                for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
+                                    tickCount++;
+                                    x--;
+                                }
                             }
                         }
                     } else { // below this Y level by less than a block *****4*****
@@ -178,10 +194,18 @@ public class RouteDirectTime implements RouteTime {
                             if (truck.getNeighborhood().getGridMarker(x ,y + 1) != "  ") { // If the East block is not out of bounds
                                 d = Direction.South;
                                 tickCount += 2;
+                                for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
+                                    tickCount++;
+                                    y++;
+                                }
                             }
                             else { //If the east block is out of bounds, the right block is not
                                 d = Direction.North;
                                 tickCount += 4;
+                                for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
+                                    tickCount++;
+                                    y--;
+                                }
                             }
                         }
                     } else { // below this X level by less than a block *****4*****
@@ -228,9 +252,17 @@ public class RouteDirectTime implements RouteTime {
                             if (truck.getNeighborhood().getGridMarker(x, y + 1) != "  ") { // If the East block is not out of bounds
                                 d = Direction.South;
                                 tickCount += 4;
+                                for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
+                                    tickCount++;
+                                    y++;
+                                }
                             } else { //If the east block is out of bounds, the right block is not
                                 d = Direction.North;
                                 tickCount += 2;
+                                for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
+                                    tickCount++;
+                                    y--;
+                                }
                             }
                         }
                     } else { // above this X level by less than a block *****4*****
