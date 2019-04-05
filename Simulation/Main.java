@@ -26,7 +26,6 @@ public class Main {
         System.out.println(truck.route(addresses) + " " + truck.seeRoute());
         System.out.println(truck.routeTime(addresses) + " " + truck.seeRouteTime());
 
-
         truck.setRoute(new RouteRightDistance());
         truck.setRouteTime(new RouteRightTime());
         System.out.println(truck.route(addresses) + " " + truck.seeRoute());

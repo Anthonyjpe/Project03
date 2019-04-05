@@ -1,76 +1,87 @@
-/*
- * Neighborhood GUI
- * Author: Jonah Beers
- * Last Updated: Sprint03
- */
 package Simulation;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Iterator;
 import java.util.PriorityQueue;
 
-public class NeighborhoodGUI extends JPanel {
+public class NeighborhoodGUI extends JFrame {
 
-    private static final int MARKER_SIZE = 5; // size of the houses and truck in the simulation
-    private static final int BLOCK_DISTANCE = 40; // size of a block on the grid
-    private static final int SLEEP_TIME = 100;
+    private static final int HEIGHT = 782, WIDTH = 761;
+    private static final int MARKER_SIZE = 5;
+    private static final int BLOCK_WIDTH = 40;
+    private PriorityQueue<Address> addresses = AddressIO.readAddresses(AddressIO.FILE);
+    private static final String TITLE = "Neighborhood Delivery Simulation";
 
-    private static int x = 90, dX; // truck's current x location and x destination
-    private static int y = 91, dY; // truck's current y location and y destination
-    private PriorityQueue<Address> addresses = AddressIO.readAddresses(AddressIO.FILE); // read in addresses
+    private int x = 90, dX;
+    private int y = 91, dY;
+    //private Timer tm = new Timer(5, this);
+    private Color green = new Color(50, 205, 50);
+    private Color red = new Color(205, 50, 50);
 
-    private Color green = new Color(50, 205, 50); // color of truck when in motion
-    private Color red = new Color(205, 50, 50); // color of truck when at a stop
-    private Color orange = new Color(255, 128, 0); // color of the distribution center
-    private Color purple = new Color(255,0,255); // color of the current destination
+    NeighborhoodGUI(final Neighborhood neighborhood) {
+        JFrame map = new JFrame();
+        JPanel canvas = new JPanel() {
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.setColor(Color.BLUE);
+                // draw streets
+                for (int x = 0; x < 19; x++)
+                    for (int y = 0; y < 19; y++)
+                        g.drawRect(BLOCK_WIDTH * x, BLOCK_WIDTH * y, BLOCK_WIDTH, BLOCK_WIDTH);
+                // draw distribution center
+                g.setColor(Color.GREEN);
+                g.fillRect(9*BLOCK_WIDTH - 2, 9*BLOCK_WIDTH + 2, MARKER_SIZE, MARKER_SIZE);
 
-    private int partial = 0; // stores number of moves left to reach a corner
-    private Direction d = Direction.Null; // sets the initial direction to NULL
-    private Neighborhood neighborhood = new Neighborhood(); // creates a new neighborhood
-    private Address currentAddress; // stores the address for the current destination
+                // draw deliveries
+                g.setColor(Color.RED);
+                Iterator<Address> iterator = addresses.iterator();
+                while (iterator.hasNext())
+                {
+                    Address address = iterator.next();
+                    double x = (address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
+                    double y = (!address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
+                    g.fillOval(((int) x)*BLOCK_WIDTH - 2 + (int)(40.0 * (x % 1)), ((int) y)*BLOCK_WIDTH - 2 + (int)(40.0 * (y % 1)), MARKER_SIZE, MARKER_SIZE);
+                }
+            }
+        };
+            map.getContentPane().add(canvas);
+            map.repaint();
 
-    void start() throws InterruptedException
+            map.setTitle(NeighborhoodGUI.TITLE);
+            map.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            map.setResizable(false);
+            map.setSize(WIDTH, HEIGHT);
+            map.setLocationRelativeTo(null); // center on screen
+            map.setVisible(true);
+
+    }
+
+    public void start()
     {
-        for (Address address : addresses)
-        {
+        PriorityQueue<Address> addresses = AddressIO.readAddresses(AddressIO.FILE);
+        Direction d = Direction.Null;
+        int partial = 0; // Stores number of moves left to reach a corner
+
+        for (Address address : addresses) {
             dY = address.getStreetNum() * 10;
             dX = address.getHouseNum() / 10;
-            currentAddress = address;
-
-            Thread.sleep(1000);
 
             while (x != dX || y != dY)
             {
-                if (partial != 0) //Finish moving to corner
-                {
+                if (partial != 0) { //Finish moving to corner
                     if (d == Direction.North)
                         for (; partial > 0; partial--)
-                        {
                             y--;
-                            repaint();
-                            Thread.sleep(SLEEP_TIME);
-                        }
                     else if (d == Direction.South)
                         for (; partial > 0; partial--)
-                        {
                             y++;
-                            repaint();
-                            Thread.sleep(SLEEP_TIME);
-                        }
                     else if (d == Direction.East)
                         for (; partial > 0; partial--)
-                        {
                             x++;
-                            repaint();
-                            Thread.sleep(SLEEP_TIME);
-                        }
                     else if (d == Direction.West)
                         for (; partial > 0; partial--)
-                        {
                             x--;
-                            repaint();
-                            Thread.sleep(SLEEP_TIME);
-                        }
                 }
 
                 if (d == Direction.Null)
@@ -78,203 +89,142 @@ public class NeighborhoodGUI extends JPanel {
                     d = Direction.North;
                     y--;
                     repaint();
-                    Thread.sleep(SLEEP_TIME);
                 }
-                else if (d == Direction.North) // Y is correct (1), Y is above full (2), reverse (3), y is above partially (4)
-                {
-                    if (y == dY) //On this Y level *****1*****
-                    {
+                else if (d == Direction.North) { // Y is correct (1), Y is above full (2), reverse (3), y is above partially (4)
+                    if (y == dY) { //On this Y level *****1*****
                         if (x < dX) //To the right
                             d = Direction.East;
                         else if (x > dX) //To the left
                             d = Direction.West;
-                    }
-                    else if (y - dY >= 10) // Above this Y level by a full block or more *****2*****
-                    {
-                        for (int i = 0; i < 10; i++) // Move a full block up (10 ticks)
-                        {
+                    } else if (y - dY >= 10) { // Above this Y level by a full block or more *****2*****
+                        for (int i = 0; i < 10; i++) { // Move a full block up (10 ticks)
+                            repaint();
                             y--;
-                            repaint();
-                            Thread.sleep(SLEEP_TIME);
                         }
-                    }
-                    else if (y < dY) // Need to be facing south *****3*****
-                    {
+                    } else if (y < dY) { // Need to be facing south *****3*****
                         if (x < dX) //To the right
                             d = Direction.East;
                         else if (x > dX) //To the left
                             d = Direction.West;
-                        else //It is on the correct X level already
-                        {
-                            if (!neighborhood.getGridMarker(x + 1, y).equals("  ")) // If the East block is not out of bounds
+                        else { //It is on the correct X level already
+                           /* if (neighborhood.getGridMarker(x + 1, y) != "  ") // If the East block is not out of bounds
                                 d = Direction.East;
                             else //If the east block is out of bounds, the right block is not
-                                d = Direction.West;
+                                d = Direction.West;*/
                         }
-                    }
-                    else if (y > dY) // above this Y level by less than a block *****4*****
-                    {
+                    } else if (y > dY) { // above this Y level by less than a block *****4*****
                         if (x < dX) //To the right
                             d = Direction.East;
                         else if (x > dX) //To the left
                             d = Direction.West;
-                        else // Y move partially up, logs into partial
-                        {
-                            for (int i = 0; y != dY; i++)
-                            {
+                        else { // Y move partially up, logs into partial
+                            for (int i = 0; y != dY; i++) {
                                 y--;
-                                repaint();
-                                Thread.sleep(SLEEP_TIME);
                                 partial = 9 - i;
                             }
                         }
                     }
                 }
-                else if (d == Direction.South) // Y is correct (1), Y is below full (2), reverse (3), y is above partially (4)
-                {
-                    if (y == dY) //On this Y level *****1*****
-                    {
+                else if (d == Direction.South) { // Y is correct (1), Y is below full (2), reverse (3), y is above partially (4)
+                    if (y == dY) { //On this Y level *****1*****
                         if (x < dX) //To the right
                             d = Direction.East;
                         else if (x > dX) //To the left
                             d = Direction.West;
-                    }
-                    else if (y - dY <= -10) // Below this Y level by a full block or more *****2*****
-                    {
-                        for (int i = 0; i < 10; i++) // Move a full block up (10 ticks)
-                        {
-                            y++;
+                    } else if (y - dY <= -10) { // Below this Y level by a full block or more *****2*****
+                        for (int i = 0; i < 10; i++) { // Move a full block up (10 ticks)
                             repaint();
-                            Thread.sleep(SLEEP_TIME);
+                            y++;
                         }
-                    }
-                    else if (y > dY) // Need to be facing north *****3*****
-                    {
+                    } else if (y > dY) { // Need to be facing north *****3*****
                         if (x < dX) //To the right
                             d = Direction.East;
                         else if (x > dX) //To the left
                             d = Direction.West;
-                        else //It is on the correct X level already
-                        {
-                            if (!neighborhood.getGridMarker(x + 1, y).equals("  ")) // If the East block is not out of bounds
+                        else { //It is on the correct X level already
+                          /*  if (neighborhood.getGridMarker(x + 1, y) != "  ") // If the East block is not out of bounds
                                 d = Direction.East;
                             else //If the east block is out of bounds, the right block is not
-                                d = Direction.West;
+                                d = Direction.West;*/
                         }
-                    }
-                    else // below this Y level by less than a block *****4*****
-                    {
+                    } else { // below this Y level by less than a block *****4*****
                         if (x < dX) //To the right
                             d = Direction.East;
                         else if (x > dX) //To the left
                             d = Direction.West;
-                        else // Y move partially up, logs into partial
-                        {
-                            for (int i = 0; y != dY; i++)
-                            {
+                        else { // Y move partially up, logs into partial
+                            for (int i = 0; y != dY; i++) {
                                 y++;
-                                repaint();
-                                Thread.sleep(SLEEP_TIME);
                                 partial = 9 - i;
                             }
                         }
                     }
                 }
-                else if (d == Direction.East) // X is correct (1), X is below full (2), reverse (3), X is below partially (4)
-                {
-                    if (x == dX) //On this X level *****1*****
-                    {
+                else if (d == Direction.East) {// X is correct (1), X is below full (2), reverse (3), X is below partially (4)
+                    if (x == dX) { //On this X level *****1*****
                         if (y < dY) //To the right
                             d = Direction.South;
                         else if (y > dY) //To the left
                             d = Direction.North;
-                    }
-                    else if (x - dX <= -10) // Below this X level by a full block or more *****2*****
-                    {
-                        for (int i = 0; i < 10; i++) // Move a full block up (10 ticks)
-                        {
+                    } else if (x - dX <= -10) { // Below this X level by a full block or more *****2*****
+                        for (int i = 0; i < 10; i++) { // Move a full block up (10 ticks)
+                            repaint();
                             x++;
-                            repaint();
-                            Thread.sleep(SLEEP_TIME);
                         }
-                    }
-                    else if (x > dX) // Need to be facing West *****3*****
-                    {
+                    } else if (x > dX) { // Need to be facing West *****3*****
                         if (y < dY) //To the right
                             d = Direction.South;
                         else if (y > dY) //To the left
                             d = Direction.North;
-                        else //It is on the correct X level already
-                        {
-                            if (!neighborhood.getGridMarker(x, y + 1).equals("  ")) // If the East block is not out of bounds
+                        else { //It is on the correct X level already
+                          /*  if (neighborhood.getGridMarker(x, y + 1) != "  ") // If the East block is not out of bounds
                                 d = Direction.South;
                             else //If the east block is out of bounds, the right block is not
-                                d = Direction.North;
+                                d = Direction.North;*/
                         }
-                    }
-                    else // below this X level by less than a block *****4*****
-                    {
+                    } else { // below this X level by less than a block *****4*****
                         if (y < dY) //To the right
                             d = Direction.South;
                         else if (y > dY) //To the left
                             d = Direction.North;
-                        else // Y move partially up, logs into partial
-                        {
-                            for (int i = 0; x != dX; i++)
-                            {
+                        else { // Y move partially up, logs into partial
+                            for (int i = 0; x != dX; i++) {
                                 x++;
-                                repaint();
-                                Thread.sleep(SLEEP_TIME);
                                 partial = 9 - i;
                             }
                         }
                     }
                 }
-                else if (d == Direction.West) // X is correct (1), X is above full (2), reverse (3), X is above partially (4)
-                {
-                    if (x == dX) //On this X level *****1*****
-                    {
+                else if (d == Direction.West) {// X is correct (1), X is above full (2), reverse (3), X is above partially (4)
+                    if (x == dX) { //On this X level *****1*****
                         if (y < dY) //To the right
                             d = Direction.South;
                         else if (y > dY) //To the left
                             d = Direction.North;
-                    }
-                    else if (x - dX >= 10) // Above this X level by a full block or more *****2*****
-                    {
-                        for (int i = 0; i < 10; i++) // Move a full block up (10 ticks)
-                        {
-                            x--;
+                    } else if (x - dX >= 10) { // Above this X level by a full block or more *****2*****
+                        for (int i = 0; i < 10; i++) { // Move a full block up (10 ticks)
                             repaint();
-                            Thread.sleep(SLEEP_TIME);
+                            x--;
                         }
-                    }
-                    else if (x < dX) // Need to be facing West *****3*****
-                    {
+                    } else if (x < dX) { // Need to be facing West *****3*****
                         if (y < dY) //To the right
                             d = Direction.South;
                         else if (y > dY) //To the left
                             d = Direction.North;
-                        else //It is on the correct X level already
-                        {
-                            if (!neighborhood.getGridMarker(x, y + 1).equals("  ")) // If the East block is not out of bounds
+                        else { //It is on the correct X level already
+                           /* if (neighborhood.getGridMarker(x, y + 1) != "  ") // If the East block is not out of bounds
                                 d = Direction.South;
                             else //If the east block is out of bounds, the right block is not
-                                d = Direction.North;
+                                d = Direction.North;*/
                         }
-                    }
-                    else // above this X level by less than a block *****4*****
-                    {
+                    } else { // above this X level by less than a block *****4*****
                         if (y < dY) //To the right
                             d = Direction.South;
                         else if (y > dY) //To the left
                             d = Direction.North;
-                        else // Y move partially up, logs into partial
-                        {
-                            for (int i = 0; x != dX; i++)
-                            {
+                        else { // Y move partially up, logs into partial
+                            for (int i = 0; x != dX; i++) {
                                 x--;
-                                repaint();
-                                Thread.sleep(SLEEP_TIME);
                                 partial = 9 - i;
                             }
                         }
@@ -284,39 +234,22 @@ public class NeighborhoodGUI extends JPanel {
         }
     }
 
-    public void paint(Graphics g)
+    public void paintComponents(Graphics g)
     {
-        // draw streets
-        g.setColor(Color.DARK_GRAY);
-        for (int x = 0; x < 19; x++)
-            for (int y = 0; y < 19; y++)
-                g.drawRect(BLOCK_DISTANCE * x, BLOCK_DISTANCE * y, BLOCK_DISTANCE, BLOCK_DISTANCE);
-
-        // draw deliveries
-        for (Address address : addresses)
-        {
-            g.setColor(Color.BLUE);
-            double y = (address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
-            double x = (!address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
-            if(address == currentAddress) // if the address is the current destination
-                g.setColor(purple);
-            g.fillOval(((int) x) * BLOCK_DISTANCE - 2 + (int) (40.0 * (x % 1)), ((int) y) * BLOCK_DISTANCE - 2 + (int) (40.0 * (y % 1)), MARKER_SIZE, MARKER_SIZE);
-        }
-
-        // draw distribution center
-        g.setColor(orange);
-        g.fillRect(9 * BLOCK_DISTANCE - 2, 9 * BLOCK_DISTANCE + 2, MARKER_SIZE, MARKER_SIZE);
-
-        // draw truck
-        if (x == dX && y == dY) // if the truck has reached its destination
-        {
-            g.setColor(red);
-            g.fillOval(x * 4 - 2,y * 4 - 2, MARKER_SIZE, MARKER_SIZE);
-        }
-        else  // if the truck is still en route
-        {
+        super.paintComponents(g);
+        g.setColor(green);
+        /*if (x != dX && y != dY)
             g.setColor(green);
-            g.fillOval(x * 4 - 2, y * 4 - 2, MARKER_SIZE, MARKER_SIZE);
-        }
+        else {
+            g.setColor(red);
+            try {
+                Thread.sleep(1000);
+            }
+            catch (Exception e) {
+
+            }
+        }*/
+        g.fillOval(x, y,5,5);
     }
+
 }
