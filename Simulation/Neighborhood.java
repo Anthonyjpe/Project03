@@ -1,3 +1,8 @@
+/*
+ * Neighborhood Class
+ * Author: Jonah Beers
+ * Last Updated: Sprint03
+ */
 package Simulation;
 
 import java.io.File;
