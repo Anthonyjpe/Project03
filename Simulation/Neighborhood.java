@@ -1,3 +1,8 @@
+/*
+ * Neighborhood Class
+ * Author: Jonah Beers
+ * Last Updated: Sprint03
+ */
 package Simulation;
 
 import java.io.File;
@@ -8,14 +13,10 @@ import java.util.Scanner;
 
 public class Neighborhood
 {
-    private static final String TITLE = "Neighborhood Delivery Simulation";
-    private static final int HEIGHT = 782, WIDTH = 761;
-    private static final int MARKER_SIZE = 5;
-    private static final int BLOCK_WIDTH = 40;
+    private static final int NEIGHBORHOOD_DIMENSIONS = 201;
     private static final int DISTRIBUTION_CENTER_STREET = 90;
     private static final int DISTRIBUTION_CENTER_NUM = 91;
 
-    private int NEIGHBORHOOD_DIMENSIONS = 201;
     private String[][] grid;
     private Truck truck[]; // multiple trucks can be owned
 
@@ -125,9 +126,4 @@ public class Neighborhood
 
     public int getDistributionCenterStreet(){return DISTRIBUTION_CENTER_STREET;}
 
-    public void setSize(int dimension){
-        if(dimension % 10 == 0) {
-            NEIGHBORHOOD_DIMENSIONS = dimension + 1;
-        }
-    }
 }
