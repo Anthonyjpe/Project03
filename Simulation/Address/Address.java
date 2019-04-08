@@ -1,4 +1,6 @@
-package Simulation;
+package Simulation.Address;
+
+import Simulation.Nouns.Time;
 
 import java.util.Random;
 
@@ -23,7 +25,7 @@ public class Address implements Comparable<Address> {
         orderTime = Integer.parseInt(time.toString());
     }
 
-    protected Address(int houseNum, boolean direction, int streetNum, int orderTime) {
+    public Address(int houseNum, boolean direction, int streetNum, int orderTime) {
         if (houseNum >= 0 && houseNum < 2000)
             this.houseNum = houseNum;
 

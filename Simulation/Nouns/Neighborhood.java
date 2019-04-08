@@ -3,7 +3,9 @@
  * Author: Jonah Beers
  * Last Updated: Sprint03
  */
-package Simulation;
+package Simulation.Nouns;
+
+import Simulation.Address.Address;
 
 import java.io.File;
 import java.io.IOException;

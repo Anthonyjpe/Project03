@@ -1,6 +1,7 @@
-package Simulation;
+package Simulation.AbstractAndInterfaces;
 
-import Simulation.Address;
+import Simulation.Address.Address;
+import Simulation.Nouns.Truck;
 
 import java.util.PriorityQueue;
 

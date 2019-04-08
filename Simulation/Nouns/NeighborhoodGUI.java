@@ -1,9 +1,14 @@
 /*
- * Neighborhood GUI
+ * Neighborhood Nouns
  * Author: Jonah Beers
  * Last Updated: Sprint03
  */
-package Simulation;
+package Simulation.Nouns;
+
+import Simulation.Address.Address;
+import Simulation.Address.AddressIO;
+import Simulation.Enumerators.Direction;
+import Simulation.Nouns.Neighborhood;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,7 +34,7 @@ public class NeighborhoodGUI extends JPanel {
     private Neighborhood neighborhood = new Neighborhood(); // creates a new neighborhood
     private Address currentAddress; // stores the address for the current destination
 
-    void start() throws InterruptedException
+    public void start() throws InterruptedException
     {
         for (Address address : addresses)
         {

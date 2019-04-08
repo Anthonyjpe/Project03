@@ -1,4 +1,8 @@
-package Simulation;
+package Simulation.Nouns;
+
+import Simulation.Enumerators.Chips;
+import Simulation.Enumerators.Drinks;
+import Simulation.Enumerators.Sandwiches;
 
 import java.util.Random;
 
@@ -10,7 +14,7 @@ public class Order {
 
     static Random rand = new Random();
 
-    protected Order(){
+    public Order(){
         sandwich = randomEnum(Sandwiches.class);
         chip = randomEnum(Chips.class);
         drink = randomEnum(Drinks.class);

@@ -1,9 +1,9 @@
 /*
- * Route GUI Interface
+ * Route Nouns Interface
  * Author: Jonah Beers
  * Last Updated: Sprint03
  */
-package Simulation;
+package Simulation.AbstractAndInterfaces;
 
 import javax.swing.*;
 

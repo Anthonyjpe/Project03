@@ -1,4 +1,11 @@
-package Simulation;
+package Simulation.Nouns;
+
+import Simulation.Address.Address;
+import Simulation.Enumerators.Direction;
+import Simulation.AbstractAndInterfaces.RouteDirectDistance;
+import Simulation.AbstractAndInterfaces.RouteDirectTime;
+import Simulation.AbstractAndInterfaces.RouteDistance;
+import Simulation.AbstractAndInterfaces.RouteTime;
 
 import java.util.PriorityQueue;
 
@@ -10,7 +17,7 @@ public class Truck {
     private RouteDistance route;
     private RouteTime routeTime;
 
-    Truck(Neighborhood neighborhood){
+    public Truck(Neighborhood neighborhood){
         this.neighborhood = neighborhood;
         xLocation = neighborhood.getDistributionCenterStreet();
         yLocation = neighborhood.getDistributionCenterNum();

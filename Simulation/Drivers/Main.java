@@ -1,12 +1,19 @@
-package Simulation;
+package Simulation.Drivers;
+
+import Simulation.Address.Address;
+import Simulation.Address.AddressIO;
+import Simulation.AbstractAndInterfaces.RouteRightDistance;
+import Simulation.AbstractAndInterfaces.RouteRightTime;
+import Simulation.Nouns.Neighborhood;
+import Simulation.Nouns.NeighborhoodGUI;
+import Simulation.Nouns.Truck;
 
 import java.util.PriorityQueue;
 
 public class Main {
 
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws InterruptedException {
         // Write 100 random addresses to a file
         AddressIO.writeAddresses(AddressIO.FILE, 100);
 
@@ -19,8 +26,7 @@ public class Main {
         neighborhood.generateNeighborhood(addresses);
         neighborhood.printNeighborhood();*/
         Neighborhood neighborhood = new Neighborhood();
-        NeighborhoodGUI simulation = new NeighborhoodGUI(neighborhood);
-        //simulation.start();
+        NeighborhoodGUI simulation = new NeighborhoodGUI();
 
         Truck truck = new Truck(neighborhood);
         System.out.println(truck.route(addresses) + " " + truck.seeRoute());

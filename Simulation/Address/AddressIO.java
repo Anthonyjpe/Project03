@@ -1,4 +1,7 @@
-package Simulation;
+package Simulation.Address;
+
+import Simulation.Nouns.Order;
+import Simulation.Nouns.Time;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -9,7 +12,7 @@ import java.util.Scanner;
 
 public class AddressIO
 {
-    public static final String FILE = "Simulation/AddressList100.txt";
+    public static final String FILE = "Simulation/Address/AddressList100.txt";
 
     public static PriorityQueue<Address> readAddresses(String filename)
     {

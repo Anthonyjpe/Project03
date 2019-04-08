@@ -1,4 +1,4 @@
-package Simulation;
+package Simulation.Nouns;
 
 import java.util.Random;
 
@@ -15,7 +15,7 @@ public class Time { //REMEMBER: This is Military time; meaning deliveries are fr
         return r.nextInt((max - min) + 1) + min;
     }
 
-    protected Time(){
+    public Time(){
         hour = getRandomHour();
         if(hour < 900)
             minute = getRandomMinute();
