@@ -22,6 +22,7 @@ Sprint 4 :
 
 -      refactor code so that you apply the Observer design pattern to your solution. 
 Your GUI display is one observer. If you have not already done so, create another observer 
-that will print the truck location to standard output as it changes. 
+that will print the truck location, time, and "Order filled" (if location is for a current order)
+to standard output as it changes. 
 The subject of the observers is the truck location.  Your code should be 
 able to easily handle the creation of more than one truck. 
