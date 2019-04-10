@@ -15,4 +15,8 @@ Sprint 4 :
        o      Assume that locations are 0.03 miles apart.
        o      The values for these assumptions should be easy to change.
 
--      refactor code so that you apply the Observer design pattern to your solution. Your GUI display is one observer. If you have not already done so, create another observer that will print the truck location to standard output as it changes. The subject of the observers is the truck location.  Your code should be able to easily handle the creation of more than one truck. 
+-      refactor code so that you apply the Observer design pattern to your solution. 
+Your GUI display is one observer. If you have not already done so, create another observer 
+that will print the truck location to standard output as it changes. 
+The subject of the observers is the truck location.  Your code should be 
+able to easily handle the creation of more than one truck. 
