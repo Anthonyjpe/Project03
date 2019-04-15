@@ -11,6 +11,6 @@ import Simulation.Nouns.Truck;
 import java.util.PriorityQueue;
 
 public interface RouteDistance {
-    public int route(PriorityQueue<Address> addresses, Truck truck);
+    public double route(PriorityQueue<Address> addresses, Truck truck);
 
 }

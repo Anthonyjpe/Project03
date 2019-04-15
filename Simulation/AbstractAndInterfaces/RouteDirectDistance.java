@@ -14,11 +14,11 @@ import java.util.PriorityQueue;
 
 public class RouteDirectDistance implements RouteDistance {
     @Override
-    public int route(PriorityQueue<Address> addresses, Truck truck) {
+    public double route(PriorityQueue<Address> addresses, Truck truck) {
         int x = truck.getXLocation();
         int y = truck.getYLocation();
         Direction d = truck.getDirection();
-        int tickCount = 0; //Number of moves
+        double tickCount = 0; //Number of moves
         int partial = 0; // Stores number of moves left to reach a corner
 
         Iterator<Address> iterator = addresses.iterator();
@@ -237,12 +237,12 @@ public class RouteDirectDistance implements RouteDistance {
             }
         }
 
-        return tickCount;
+        return tickCount * .3;
 
     }
 
     @Override
     public String toString() {
-        return "ticks traveled with Direct route";
+        return "miles traveled with Direct route";
     }
 }

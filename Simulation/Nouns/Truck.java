@@ -31,12 +31,21 @@ public class Truck {
         routeTime = new RouteDirectTime();
     }
 
-    public int route(PriorityQueue<Address> addresses){
-       return this.route.route(addresses,this);
+    public double route(PriorityQueue<Address> addresses){
+       return Math.round(this.route.route(addresses,this) * 100.) / 100.;
     }
 
-    public int routeTime(PriorityQueue<Address> addresses){
-        return this.routeTime.route(addresses,this);
+    public String routeTime(PriorityQueue<Address> addresses){
+        //double rounded to nearest tenth
+        double hours = this.routeTime.route(addresses,this);
+        double minutes = hours - Math.floor(hours); minutes *= 60;
+        double seconds = minutes - Math.floor(minutes); seconds *= 60;
+
+        //casting double to int after flooring (ceiling for seconds)
+        int hour = (int) Math.floor(hours); int minute = (int) Math.floor(minutes); int second = (int) Math.ceil(seconds);
+
+        //plural for double, singular for int
+        return hour + "hrs " + minute + "mins " + second + "secs";
     }
 
     public int getXLocation() {

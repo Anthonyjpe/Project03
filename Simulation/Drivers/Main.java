@@ -10,7 +10,6 @@ import Simulation.Address.AddressIO;
 import Simulation.AbstractAndInterfaces.RouteRightDistance;
 import Simulation.AbstractAndInterfaces.RouteRightTime;
 import Simulation.Nouns.Neighborhood;
-import Simulation.Nouns.NeighborhoodGUI;
 import Simulation.Nouns.Truck;
 
 import java.util.PriorityQueue;
@@ -31,7 +30,6 @@ public class Main {
         neighborhood.generateNeighborhood(addresses);
         neighborhood.printNeighborhood();*/
         Neighborhood neighborhood = new Neighborhood();
-        NeighborhoodGUI simulation = new NeighborhoodGUI();
 
         Truck truck = new Truck(neighborhood);
         System.out.println(truck.route(addresses) + " " + truck.seeRoute());

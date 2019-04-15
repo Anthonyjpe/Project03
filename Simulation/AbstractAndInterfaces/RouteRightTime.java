@@ -15,11 +15,11 @@ import java.util.PriorityQueue;
 public class RouteRightTime implements RouteTime {
 
     @Override
-    public int route(PriorityQueue<Address> addresses, Truck truck) {
+    public double route(PriorityQueue<Address> addresses, Truck truck) {
         int x = truck.getXLocation();
         int y = truck.getYLocation();
         Direction d = truck.getDirection();
-        int tickCount = 0; //Number of moves
+        double tickCount = 0; //Number of moves
         int partial = 0; // Stores number of moves left to reach a corner
 
         Iterator<Address> iterator = addresses.iterator();
@@ -325,11 +325,11 @@ public class RouteRightTime implements RouteTime {
             }
         }
 
-        return tickCount;
+        return tickCount / 1000;
 
     }
 
     public String toString() {
-        return "units of time with Right Turn route";
+        return "hours with Right Turn route";
     }
 }
