@@ -1,5 +1,5 @@
 /*
- * Neighborhood Nouns
+ * Neighborhood GUI
  * Author: Jonah Beers
  * Last Updated: Sprint03
  */

@@ -1,6 +1,6 @@
 /*
- * Neighborhood Class
- * Author: Jonah Beers
+ * Neighborhood
+ * Author: Anthony Estephan
  * Last Updated: Sprint03
  */
 package Simulation.Nouns;

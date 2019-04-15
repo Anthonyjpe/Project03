@@ -1,3 +1,8 @@
+/*
+ * Truck
+ * Author: Anthony Estephan
+ * Last Updated: Sprint03
+ */
 package Simulation.Nouns;
 
 import Simulation.Address.Address;

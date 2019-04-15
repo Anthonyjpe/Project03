@@ -1,3 +1,8 @@
+/*
+ * Time
+ * Author:
+ * Last Updated: Sprint03
+ */
 package Simulation.Nouns;
 
 import java.util.Random;

@@ -1,3 +1,8 @@
+/*
+ * Driver for calculating time/distance
+ * Author: Anthony Estephan
+ * Last Updated: Sprint03
+ */
 package Simulation.Drivers;
 
 import Simulation.Address.Address;
