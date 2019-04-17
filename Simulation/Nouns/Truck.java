@@ -12,7 +12,9 @@ import Simulation.AbstractAndInterfaces.RouteDirectTime;
 import Simulation.AbstractAndInterfaces.RouteDistance;
 import Simulation.AbstractAndInterfaces.RouteTime;
 
+import java.util.LinkedList;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class Truck {
     private int xLocation;
@@ -21,6 +23,7 @@ public class Truck {
     private Neighborhood neighborhood;
     private RouteDistance route;
     private RouteTime routeTime;
+    protected Queue<Direction> movement;
 
     public Truck(Neighborhood neighborhood){
         this.neighborhood = neighborhood;
@@ -29,6 +32,7 @@ public class Truck {
         direction = Direction.Null;
         route = new RouteDirectDistance();
         routeTime = new RouteDirectTime();
+        movement = new LinkedList<>();
     }
 
     public double route(PriorityQueue<Address> addresses){
@@ -88,4 +92,33 @@ public class Truck {
 
     public String seeRouteTime(){ return this.routeTime.toString();}
 
+    public void addMove(Direction direction){ movement.add(direction); }
+
+    public void move(){
+        if(!movement.isEmpty())
+        switch (movement.poll()){
+            case Up:
+                yLocation--;
+                break;
+            case Down:
+                yLocation++;
+                break;
+            case Right:
+                xLocation++;
+                break;
+            case Left:
+                xLocation--;
+                break;
+        }
+    }
+
+    public void resetRoute(){
+        while(!movement.isEmpty()){
+            movement.poll();
+        }
+    }
+
+    public boolean canMove(){
+        return !movement.isEmpty();
+    }
 }

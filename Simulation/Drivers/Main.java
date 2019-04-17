@@ -40,6 +40,11 @@ public class Main {
         System.out.println(truck.route(addresses) + " " + truck.seeRoute());
         System.out.println(truck.routeTime(addresses) + " " + truck.seeRouteTime());
 
+        //truck.route resets move queue (in case anything was in it) and adds moves to queue
+        while(truck.canMove()) {//MUST RUN A truck.route BEFORE RUNNING GUI
+            truck.move();
+            System.out.println(truck.getXLocation() + "   " + truck.getYLocation());
+        }
     }
 }
 

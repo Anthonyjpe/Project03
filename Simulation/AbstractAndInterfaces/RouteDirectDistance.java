@@ -20,6 +20,7 @@ public class RouteDirectDistance implements RouteDistance {
         Direction d = truck.getDirection();
         double tickCount = 0; //Number of moves
         int partial = 0; // Stores number of moves left to reach a corner
+        truck.resetRoute(); //RESETS ROUTE QUEUE BEFORE ADDING TO ROUTE QUEUE
 
         Iterator<Address> iterator = addresses.iterator();
         while (iterator.hasNext()) {
@@ -34,29 +35,33 @@ public class RouteDirectDistance implements RouteDistance {
                         for(;partial > 0; partial--) {
                             tickCount++;
                             y--;
+                            truck.addMove(Direction.Up);
                         }
                     else if (d == Direction.South)
                         for(;partial > 0; partial--) {
                             tickCount++;
                             y++;
+                            truck.addMove(Direction.Down);
                         }
                     else if (d == Direction.East)
                         for(;partial > 0; partial--) {
                             tickCount++;
                             x++;
+                            truck.addMove(Direction.Right);
                         }
                     else if (d == Direction.West)
                         for(;partial > 0; partial--) {
                             tickCount++;
                             x--;
+                            truck.addMove(Direction.Left);
                         }
-
                 }
 
 
                 if(d == Direction.Null){
                     d = Direction.North;
                     y--;
+                    truck.addMove(Direction.Up);
                     tickCount++;
                 } else if(d == Direction.North){ // Y is correct (1), Y is above full (2), reverse (3), y is above partially (4)
                     if(y == dY){ //On this Y level *****1*****
@@ -68,6 +73,7 @@ public class RouteDirectDistance implements RouteDistance {
                         for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
                             tickCount++;
                             y--;
+                            truck.addMove(Direction.Up);
                         }
                     } else if( y < dY){ // Need to be facing south *****3*****
                         if(x < dX) //To the right
@@ -80,12 +86,14 @@ public class RouteDirectDistance implements RouteDistance {
                                 for (int i = 0; i < 10; i++) { // Move a full block up (10 ticks)
                                     tickCount++;
                                     x++;
+                                    truck.addMove(Direction.Right);
                                 }
                             } else { //If the east block is out of bounds, the right block is not
                                 d = Direction.West;
                                 for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
                                     tickCount++;
                                     x--;
+                                    truck.addMove(Direction.Left);
                                 }
                             }
                         }
@@ -98,6 +106,7 @@ public class RouteDirectDistance implements RouteDistance {
                             for(int i = 0; y != dY; i++) {
                                 y--;
                                 partial = 9 - i;
+                                truck.addMove(Direction.Up);
                             }
                         }
                     }
@@ -111,6 +120,7 @@ public class RouteDirectDistance implements RouteDistance {
                         for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
                             tickCount++;
                             y++;
+                            truck.addMove(Direction.Down);
                         }
                     } else if (y > dY) { // Need to be facing north *****3*****
                         if(x < dX) //To the right
@@ -123,6 +133,7 @@ public class RouteDirectDistance implements RouteDistance {
                                 for (int i = 0; i < 10; i++) { // Move a full block up (10 ticks)
                                     tickCount++;
                                     x++;
+                                    truck.addMove(Direction.Right);
                                 }
                             }
                             else { //If the east block is out of bounds, the right block is not
@@ -130,6 +141,7 @@ public class RouteDirectDistance implements RouteDistance {
                                 for (int i = 0; i < 10; i++) { // Move a full block up (10 ticks)
                                     tickCount++;
                                     x--;
+                                    truck.addMove(Direction.Left);
                                 }
                             }
                         }
@@ -142,6 +154,7 @@ public class RouteDirectDistance implements RouteDistance {
                             for(int i = 0; y != dY; i++) {
                                 y++;
                                 partial = 9 - i;
+                                truck.addMove(Direction.Down);
                             }
                         }
                     }
@@ -155,6 +168,7 @@ public class RouteDirectDistance implements RouteDistance {
                         for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
                             tickCount++;
                             x++;
+                            truck.addMove(Direction.Right);
                         }
                     } else if (x > dX) { // Need to be facing West *****3*****
                         if(y < dY) //To the right
@@ -167,6 +181,7 @@ public class RouteDirectDistance implements RouteDistance {
                                 for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
                                     tickCount++;
                                     y++;
+                                    truck.addMove(Direction.Down);
                                 }
                             }
                             else { //If the east block is out of bounds, the right block is not
@@ -174,6 +189,7 @@ public class RouteDirectDistance implements RouteDistance {
                                 for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
                                     tickCount++;
                                     y--;
+                                    truck.addMove(Direction.Up);
                                 }
                             }
                         }
@@ -186,6 +202,7 @@ public class RouteDirectDistance implements RouteDistance {
                             for(int i = 0; x != dX; i++) {
                                 x++;
                                 partial = 9 - i;
+                                truck.addMove(Direction.Right);
                             }
                         }
                     }
@@ -199,6 +216,7 @@ public class RouteDirectDistance implements RouteDistance {
                         for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
                             tickCount++;
                             x--;
+                            truck.addMove(Direction.Left);
                         }
                     } else if (x < dX) { // Need to be facing West *****3*****
                         if(y < dY) //To the right
@@ -211,6 +229,7 @@ public class RouteDirectDistance implements RouteDistance {
                                 for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
                                     tickCount++;
                                     y++;
+                                    truck.addMove(Direction.Down);
                                 }
                             }
                             else { //If the east block is out of bounds, the right block is not
@@ -218,6 +237,7 @@ public class RouteDirectDistance implements RouteDistance {
                                 for(int i = 0; i < 10; i++){ // Move a full block up (10 ticks)
                                     tickCount++;
                                     y--;
+                                    truck.addMove(Direction.Up);
                                 }
                             }
                         }
@@ -230,6 +250,7 @@ public class RouteDirectDistance implements RouteDistance {
                             for(int i = 0; x != dX; i++) {
                                 x--;
                                 partial = 9 - i;
+                                truck.addMove(Direction.Left);
                             }
                         }
                     }
