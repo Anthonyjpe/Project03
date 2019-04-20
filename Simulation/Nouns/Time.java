@@ -1,7 +1,7 @@
 /*
  * Time
- * Author:
- * Last Updated: Sprint03
+ * Author: Trae Freeman
+ * Last Updated: Sprint04
  */
 package Simulation.Nouns;
 

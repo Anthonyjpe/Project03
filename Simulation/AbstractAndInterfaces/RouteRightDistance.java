@@ -1,7 +1,7 @@
 /*
  * RouteRightDistance
- * Author: Anthony Estephan
- * Last Updated: Sprint03
+ * Author: Anthony Estephan & Trae Freeman
+ * Last Updated: Sprint04
  */
 package Simulation.AbstractAndInterfaces;
 
