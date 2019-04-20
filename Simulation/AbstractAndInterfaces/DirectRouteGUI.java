@@ -14,7 +14,7 @@ import Simulation.Nouns.Truck;
 import java.awt.*;
 import java.util.PriorityQueue;
 
-public class DirectRouteGUI extends RouteGUI {
+public class DirectRouteGUI extends RouteGUI{
 
     private static final int MARKER_SIZE = 5; // size of the houses and truck in the simulation
     private static final int BLOCK_DISTANCE = 40; // size of a block on the grid
@@ -32,6 +32,7 @@ public class DirectRouteGUI extends RouteGUI {
 
     public void start() throws InterruptedException
     {
+
         Truck truck = new Truck(new Neighborhood());
         x = truck.getXLocation(); // initial x position of the truck
         y = truck.getYLocation(); // initial y position of the truck
@@ -280,6 +281,18 @@ public class DirectRouteGUI extends RouteGUI {
                 }
             }
         }
+
+    }
+
+    @Override
+    public void start(int x, int y, int dX, int dY) throws InterruptedException {
+
+        this.x = x;
+        this.y = y;
+        this.dX = dX;
+        this.dY = dY;
+        repaint();
+
 
     }
 

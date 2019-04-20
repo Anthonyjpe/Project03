@@ -350,6 +350,15 @@ public class RightRouteGUI extends RouteGUI {
 
     }
 
+    @Override
+    public void start(int x, int y, int dX, int dY) throws InterruptedException {
+        this.x = x;
+        this.y = y;
+        this.dX = dX;
+        this.dY = dY;
+        repaint();
+    }
+
     public void paint(Graphics g)
     {
         // draw streets

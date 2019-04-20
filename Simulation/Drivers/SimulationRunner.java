@@ -32,6 +32,7 @@ public class SimulationRunner extends JFrame implements Observer
     private int y, dY; // truck's current y location and y destination
     private Address currentAddress; // stores the address for the current destination
     private PriorityQueue<Address> addresses = AddressIO.readAddresses(AddressIO.FILE); // read in addresses
+    private RouteGUI neighborhoodGui;
 
     private Color green = new Color(50, 205, 50); // color of truck when in motion
     private Color red = new Color(205, 50, 50); // color of truck when at a stop
@@ -77,7 +78,7 @@ public class SimulationRunner extends JFrame implements Observer
     @Override
     public void update(int x, int y) throws InterruptedException {
         //thread sleep  1
-        try {Thread.sleep(1000);}
+        try {Thread.sleep(100);}
         catch (InterruptedException e){
             System.out.println("Sleep failed!");
         }
@@ -85,7 +86,10 @@ public class SimulationRunner extends JFrame implements Observer
         this.x = x;
         this.y = y;
         //repaint   3
-        this.repaint();
+        //this.repaint();
+        neighborhoodGui.start(x, y, x + 1, y + 1);
+
+
     }
 
     private class Event1 implements ActionListener
@@ -138,8 +142,8 @@ public class SimulationRunner extends JFrame implements Observer
         private DirectRunner() throws InterruptedException
         {
             map = new JFrame();
-            RouteGUI neighborhoodGUI = new DirectRouteGUI();
-            map.add(neighborhoodGUI);
+            neighborhoodGui = new DirectRouteGUI();
+            map.add(neighborhoodGui);
 
             map.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             map.setTitle(TITLE);
@@ -184,7 +188,7 @@ public class SimulationRunner extends JFrame implements Observer
         else  // if the truck is still en route
         {
             g.setColor(green);
-            g.fillOval(x * 4 - 2, y * 4 - 2, MARKER_SIZE + 200, MARKER_SIZE + 200);
+            g.fillOval(x * 4 - 2, y * 4 - 2, MARKER_SIZE, MARKER_SIZE);
         }
     }
 
