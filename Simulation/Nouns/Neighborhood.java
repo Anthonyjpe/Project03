@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
-public class Neighborhood implements Observer
+public class Neighborhood
 {
     private static final int NEIGHBORHOOD_DIMENSIONS = 201;
     private static final int DISTRIBUTION_CENTER_STREET = 90;
@@ -128,8 +128,4 @@ public class Neighborhood implements Observer
 
     public int getDistributionCenterStreet(){return DISTRIBUTION_CENTER_STREET;}
 
-    @Override
-    public void update(int x, int y) {
-
-    }
 }

@@ -7,5 +7,5 @@ package Simulation.Nouns;
 
 public interface Observer {
 
-    void update(int x, int y) throws InterruptedException; //all information that neighborhood needs
+    void update(int x, int y, int dX, int dY) throws InterruptedException; //all information that neighborhood needs
 }

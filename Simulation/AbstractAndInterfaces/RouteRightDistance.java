@@ -28,6 +28,7 @@ public class RouteRightDistance implements RouteDistance {
             Address address = iterator.next();
             int dY = address.getStreetNum() * 10;
             int dX = address.getHouseNum() / 10;
+            truck.addAddress(address);
 
             while (x != dX || y != dY) {
 

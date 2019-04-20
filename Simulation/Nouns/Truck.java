@@ -13,10 +13,7 @@ import Simulation.AbstractAndInterfaces.RouteDirectTime;
 import Simulation.AbstractAndInterfaces.RouteDistance;
 import Simulation.AbstractAndInterfaces.RouteTime;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 public class Truck extends Subject{
     private int xLocation;
@@ -28,6 +25,7 @@ public class Truck extends Subject{
     protected Queue<Direction> movement;
     private ArrayList<Observer> observers;
     private SimulationRunner simRunner;
+    private PriorityQueue<Address> addressList;
 
     public Truck(Neighborhood neighborhood){
         this.neighborhood = neighborhood;
@@ -38,6 +36,7 @@ public class Truck extends Subject{
         routeTime = new RouteDirectTime();
         movement = new LinkedList<>();
         observers = new ArrayList<>();
+        addressList = new PriorityQueue<>();
         try{
             simRunner = new SimulationRunner();
             registerObservers(simRunner);
@@ -107,25 +106,32 @@ public class Truck extends Subject{
     public void addMove(Direction direction){ movement.add(direction); }
 
     public void move(){
-        if(!movement.isEmpty())
-        switch (movement.poll()){
-            case Up:
-                yLocation--;
-                notifyObservers();
-                break;
-            case Down:
-                yLocation++;
-                notifyObservers();
-                break;
-            case Right:
-                xLocation++;
-                notifyObservers();
-                break;
-            case Left:
-                xLocation--;
-                notifyObservers();
-                break;
+
+        if(!movement.isEmpty()) {
+            if(xLocation == addressList.peek().getHouseNum() / 10 && yLocation == addressList.peek().getStreetNum() * 10){
+                addressList.poll();
+            }
+
+            switch (movement.poll()) {
+                case Up:
+                    yLocation--;
+                    notifyObservers();
+                    break;
+                case Down:
+                    yLocation++;
+                    notifyObservers();
+                    break;
+                case Right:
+                    xLocation++;
+                    notifyObservers();
+                    break;
+                case Left:
+                    xLocation--;
+                    notifyObservers();
+                    break;
+            }
         }
+
     }
 
     public void resetRoute(){
@@ -142,7 +148,7 @@ public class Truck extends Subject{
     public void notifyObservers(){
         for (int i = 0; i < observers.size(); i++){
             try {
-                observers.get(i).update(this.getXLocation(), this.getYLocation());
+                observers.get(i).update(this.getXLocation(), this.getYLocation(),addressList.peek().getHouseNum() / 10,addressList.peek().getStreetNum() * 10 );
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -151,11 +157,15 @@ public class Truck extends Subject{
 
     public void registerObservers(Observer o){
         observers.add(o);
-        notifyObservers();
+//        notifyObservers();
     }
 
     public void removeObservers(Observer o){
         observers.remove(o);
         notifyObservers();
+    }
+
+    public void addAddress(Address a){
+        addressList.add(a);
     }
 }

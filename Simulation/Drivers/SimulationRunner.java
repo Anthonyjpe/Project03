@@ -76,7 +76,7 @@ public class SimulationRunner extends JFrame implements Observer
     }
 
     @Override
-    public void update(int x, int y) throws InterruptedException {
+    public void update(int x, int y, int dX, int dY) throws InterruptedException {
         //thread sleep  1
         try {Thread.sleep(100);}
         catch (InterruptedException e){
@@ -85,9 +85,12 @@ public class SimulationRunner extends JFrame implements Observer
         //replace truck x & y   2
         this.x = x;
         this.y = y;
+        this.dX = dX;
+        this.dY = dY;
         //repaint   3
         //this.repaint();
-        neighborhoodGui.start(x, y, x + 1, y + 1);
+
+        neighborhoodGui.start(x, y, dX, dY);
 
 
     }
