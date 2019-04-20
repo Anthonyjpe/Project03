@@ -1,6 +1,6 @@
 /*
  * Address
- * Author:
+ * Author: Trae Freeman
  * Last Updated: Sprint03
  */
 package Simulation.Address;

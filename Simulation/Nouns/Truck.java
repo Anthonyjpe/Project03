@@ -1,22 +1,24 @@
 /*
  * Truck
- * Author: Anthony Estephan
+ * Author: Anthony Estephan & Trae Freeman
  * Last Updated: Sprint03
  */
 package Simulation.Nouns;
 
 import Simulation.Address.Address;
+import Simulation.Drivers.SimulationRunner;
 import Simulation.Enumerators.Direction;
 import Simulation.AbstractAndInterfaces.RouteDirectDistance;
 import Simulation.AbstractAndInterfaces.RouteDirectTime;
 import Simulation.AbstractAndInterfaces.RouteDistance;
 import Simulation.AbstractAndInterfaces.RouteTime;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class Truck {
+public class Truck extends Subject{
     private int xLocation;
     private int yLocation;
     private Direction direction;
@@ -24,6 +26,8 @@ public class Truck {
     private RouteDistance route;
     private RouteTime routeTime;
     protected Queue<Direction> movement;
+    private ArrayList<Observer> observers;
+    private SimulationRunner simRunner;
 
     public Truck(Neighborhood neighborhood){
         this.neighborhood = neighborhood;
@@ -33,6 +37,14 @@ public class Truck {
         route = new RouteDirectDistance();
         routeTime = new RouteDirectTime();
         movement = new LinkedList<>();
+        observers = new ArrayList<>();
+        try{
+            simRunner = new SimulationRunner();
+            registerObservers(simRunner);
+        }
+        catch (InterruptedException e){
+            System.out.println("Sleep failed");
+        }
     }
 
     public double route(PriorityQueue<Address> addresses){
@@ -99,15 +111,19 @@ public class Truck {
         switch (movement.poll()){
             case Up:
                 yLocation--;
+                notifyObservers();
                 break;
             case Down:
                 yLocation++;
+                notifyObservers();
                 break;
             case Right:
                 xLocation++;
+                notifyObservers();
                 break;
             case Left:
                 xLocation--;
+                notifyObservers();
                 break;
         }
     }
@@ -120,5 +136,26 @@ public class Truck {
 
     public boolean canMove(){
         return !movement.isEmpty();
+    }
+
+    @Override
+    public void notifyObservers(){
+        for (int i = 0; i < observers.size(); i++){
+            try {
+                observers.get(i).update(this.getXLocation(), this.getYLocation());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void registerObservers(Observer o){
+        observers.add(o);
+        notifyObservers();
+    }
+
+    public void removeObservers(Observer o){
+        observers.remove(o);
+        notifyObservers();
     }
 }

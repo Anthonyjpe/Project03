@@ -1,6 +1,6 @@
 /*
  * Order
- * Author:
+ * Author: Trae Freeman
  * Last Updated: Sprint03
  */
 package Simulation.Nouns;
