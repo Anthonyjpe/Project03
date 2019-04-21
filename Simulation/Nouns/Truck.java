@@ -105,8 +105,8 @@ public class Truck extends Subject{
 
     public void addMove(Direction direction){ movement.add(direction); }
 
-    public void move(){
-
+    public void move()
+    {
         if(!movement.isEmpty()) {
             if(xLocation == addressList.peek().getHouseNum() / 10 && yLocation == addressList.peek().getStreetNum() * 10){
                 addressList.poll();
@@ -149,9 +149,8 @@ public class Truck extends Subject{
         for (int i = 0; i < observers.size(); i++){
             try {
                 observers.get(i).update(this.getXLocation(), this.getYLocation(),addressList.peek().getHouseNum() / 10,addressList.peek().getStreetNum() * 10 );
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
+            catch (InterruptedException ignored) { }
         }
     }
 

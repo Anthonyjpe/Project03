@@ -25,12 +25,7 @@ public class Main {
         PriorityQueue<Address> addresses = AddressIO.readAddresses(AddressIO.FILE);
 
         // Draw the neighborhood with the addresses and distribution center shown
-        /*Neighborhood.drawNeighborhood(addresses);
         Neighborhood neighborhood = new Neighborhood();
-        neighborhood.generateNeighborhood(addresses);
-        neighborhood.printNeighborhood();*/
-        Neighborhood neighborhood = new Neighborhood();
-
         Truck truck = new Truck(neighborhood);
         System.out.println(truck.route(addresses) + " " + truck.seeRoute());
         System.out.println(truck.routeTime(addresses) + " " + truck.seeRouteTime());
@@ -43,7 +38,7 @@ public class Main {
         */
 
         //truck.route resets move queue (in case anything was in it) and adds moves to queue
-        while(truck.canMove()) {//MUST RUN A truck.route BEFORE RUNNING GUI
+        while(truck.canMove()) { //MUST RUN A truck.route BEFORE RUNNING GUI
             truck.move();
             System.out.println(truck.getXLocation() + "   " + truck.getYLocation());
         }

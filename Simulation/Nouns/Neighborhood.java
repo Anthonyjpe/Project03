@@ -1,6 +1,6 @@
 /*
  * Neighborhood
- * Author: Anthony Estephan
+ * Author: Jonah Beers & Anthony Estephan
  * Last Updated: Sprint04
  */
 package Simulation.Nouns;
