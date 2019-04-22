@@ -35,39 +35,39 @@ public class RightRouteGUI extends RouteGUI {
 
     public void paint(Graphics g)
     {
-        // draw backdrop
+        // set backdrop
         g.setColor(new Color(0,0,0));
-        g.fillRect(0,0, WIDTH, HEIGHT);
+        g.fillRect(0,0,800,800);
 
         // draw streets
         g.setColor(new Color(255,255,255));
         for (int x = 0; x < 19; x++)
             for (int y = 0; y < 19; y++)
-                g.drawRect(BLOCK_DISTANCE * x, BLOCK_DISTANCE * y, BLOCK_DISTANCE, BLOCK_DISTANCE);
+                g.drawRect(BLOCK_DISTANCE * x + 5, BLOCK_DISTANCE * y + 5, BLOCK_DISTANCE, BLOCK_DISTANCE);
 
         // draw deliveries
         for (Address address : addresses)
         {
-            g.setColor(Color.BLUE);
+            g.setColor(new Color(0,255,255));
             double y = (address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
             double x = (!address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
-            g.fillOval(((int) x) * BLOCK_DISTANCE - 2 + (int) (40.0 * (x % 1)), ((int) y) * BLOCK_DISTANCE - 2 + (int) (40.0 * (y % 1)), MARKER_SIZE, MARKER_SIZE);
+            g.fillOval(((int) x) * BLOCK_DISTANCE - 2 + (int) (40.0 * (x % 1)) + 5, ((int) y) * BLOCK_DISTANCE - 2 + (int) (40.0 * (y % 1)) + 5, MARKER_SIZE, MARKER_SIZE);
         }
 
         // draw distribution center
         g.setColor(orange);
-        g.fillRect(9 * BLOCK_DISTANCE - 2, 9 * BLOCK_DISTANCE + 2, MARKER_SIZE, MARKER_SIZE);
+        g.fillRect(9 * BLOCK_DISTANCE - 2 + 5, 9 * BLOCK_DISTANCE + 2 + 5, MARKER_SIZE, MARKER_SIZE);
 
         // draw truck
         if (x == dX && y == dY) // if the truck has reached its destination
         {
             g.setColor(red);
-            g.fillOval(x * 4 - 2,y * 4 - 2, MARKER_SIZE, MARKER_SIZE);
+            g.fillOval(x * 4 - 2 + 5,y * 4 - 2 + 5, MARKER_SIZE, MARKER_SIZE);
         }
         else  // if the truck is still en route
         {
             g.setColor(green);
-            g.fillOval(x * 4 - 2, y * 4 - 2, MARKER_SIZE, MARKER_SIZE);
+            g.fillOval(x * 4 - 2 + 5, y * 4 - 2 + 5, MARKER_SIZE, MARKER_SIZE);
         }
     }
 }

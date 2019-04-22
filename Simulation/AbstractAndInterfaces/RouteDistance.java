@@ -12,5 +12,4 @@ import java.util.PriorityQueue;
 
 public interface RouteDistance {
     public double route(PriorityQueue<Address> addresses, Truck truck);
-
 }

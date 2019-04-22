@@ -7,8 +7,6 @@ package Simulation.Drivers;
 
 import Simulation.Address.Address;
 import Simulation.Address.AddressIO;
-import Simulation.AbstractAndInterfaces.RouteRightDistance;
-import Simulation.AbstractAndInterfaces.RouteRightTime;
 import Simulation.Nouns.Neighborhood;
 import Simulation.Nouns.Truck;
 
@@ -19,7 +17,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         // Write 100 random addresses to a file
-        AddressIO.writeAddresses(AddressIO.FILE, 100);
+        //AddressIO.writeAddresses(AddressIO.FILE, 100);
 
         // Read the addresses from the file and place them in a PriorityQueue
         PriorityQueue<Address> addresses = AddressIO.readAddresses(AddressIO.FILE);
@@ -40,7 +38,7 @@ public class Main {
         //truck.route resets move queue (in case anything was in it) and adds moves to queue
         while(truck.canMove()) { //MUST RUN A truck.route BEFORE RUNNING GUI
             truck.move();
-            System.out.println(truck.getXLocation() + "   " + truck.getYLocation());
+            System.out.println("Truck's location: " + truck.getXLocation() + "   " + truck.getYLocation());
         }
     }
 }
