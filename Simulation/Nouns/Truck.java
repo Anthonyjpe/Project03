@@ -5,13 +5,10 @@
  */
 package Simulation.Nouns;
 
+import Simulation.AbstractAndInterfaces.*;
 import Simulation.Address.Address;
 import Simulation.Drivers.SimulationRunner;
 import Simulation.Enumerators.Direction;
-import Simulation.AbstractAndInterfaces.RouteDirectDistance;
-import Simulation.AbstractAndInterfaces.RouteDirectTime;
-import Simulation.AbstractAndInterfaces.RouteDistance;
-import Simulation.AbstractAndInterfaces.RouteTime;
 
 import java.util.*;
 
@@ -24,7 +21,7 @@ public class Truck extends Subject{
     private RouteTime routeTime;
     protected Queue<Direction> movement;
     private ArrayList<Observer> observers;
-    private SimulationRunner simRunner;
+    //private SimulationRunner simRunner;
     private PriorityQueue<Address> addressList;
 
     public Truck(Neighborhood neighborhood){
@@ -37,13 +34,13 @@ public class Truck extends Subject{
         movement = new LinkedList<>();
         observers = new ArrayList<>();
         addressList = new PriorityQueue<>();
-        try{
+        /*try{
             simRunner = new SimulationRunner();
             registerObservers(simRunner);
         }
         catch (InterruptedException e){
             System.out.println("Sleep failed");
-        }
+        }*/
     }
 
     public double route(PriorityQueue<Address> addresses){
@@ -162,6 +159,16 @@ public class Truck extends Subject{
     public void removeObservers(Observer o){
         observers.remove(o);
         notifyObservers();
+    }
+
+    public void userInput(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter: 1 for Direct\nEnter: 2 for Right Turn");
+        int i = scanner.nextInt();
+        if(i == 2)
+            setRoute(new RouteRightDistance());
+        else
+            setRoute(new RouteDirectDistance());
     }
 
     public void addAddress(Address a){

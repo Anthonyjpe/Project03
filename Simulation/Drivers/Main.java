@@ -27,7 +27,11 @@ public class Main {
         Truck truck = new Truck(neighborhood);
         System.out.println(truck.route(addresses) + " " + truck.seeRoute());
         System.out.println(truck.routeTime(addresses) + " " + truck.seeRouteTime());
+        
+        truck.userInput();
 
+        SimulationRunner sr = new SimulationRunner();
+        truck.registerObservers(sr);
         /*
         truck.setRoute(new RouteRightDistance());
         truck.setRouteTime(new RouteRightTime());
