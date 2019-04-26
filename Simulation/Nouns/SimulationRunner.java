@@ -3,7 +3,7 @@
  * Author: Jonah Beers
  * Last Updated: Sprint04
  */
-package Simulation.Drivers;
+package Simulation.Nouns;
 
 import Simulation.AbstractAndInterfaces.*;
 import Simulation.Nouns.Observer;

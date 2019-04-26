@@ -7,7 +7,6 @@ package Simulation.Nouns;
 
 import Simulation.AbstractAndInterfaces.*;
 import Simulation.Address.Address;
-import Simulation.Drivers.SimulationRunner;
 import Simulation.Enumerators.Direction;
 
 import java.util.*;
