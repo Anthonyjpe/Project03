@@ -97,7 +97,7 @@ public class Address implements Comparable<Address> {
 
         */ // BAsed on actual line distance rather than actual time distance
         if (direction) {
-            return Math.abs(DISTRIBUTION_HOUSENUM - houseNum) + Math.abs(DISTRIBUTION_STREETNUM * 100);
+            return Math.abs(DISTRIBUTION_HOUSENUM - houseNum) + Math.abs((DISTRIBUTION_STREETNUM * 100) - (streetNum * 100));
         }
 
         return Math.abs(DISTRIBUTION_HOUSENUM - (streetNum * 100)) + Math.abs((DISTRIBUTION_STREETNUM * 100) - houseNum);

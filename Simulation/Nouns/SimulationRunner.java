@@ -44,10 +44,6 @@ public class SimulationRunner extends JFrame implements Observer
         directOption.addActionListener(new Event1());
         panel.add(directOption);
 
-        JButton rightOption = new JButton("Right");
-        rightOption.addActionListener(new Event2());
-        panel.add(rightOption);
-
         selectionWindow.add(panel);
         selectionWindow.setResizable(false);
         selectionWindow.setLocationRelativeTo(null);
@@ -88,37 +84,7 @@ public class SimulationRunner extends JFrame implements Observer
         }
     }
 
-    private class Event2 implements ActionListener
-    {
-        public void actionPerformed(ActionEvent e)
-        {
-            selectionWindow.setVisible(false);
-            try {
-                new RightRunner();
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        }
-    }
 
-    private class RightRunner
-    {
-        private RightRunner() throws InterruptedException
-        {
-            map = new JFrame();
-            route = new RouteRightDistance();
-            gui = new RightRouteGUI();
-            map.add(gui);
-            repaint();
-
-            map.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            map.setTitle("Neighborhood Delivery Simulation - Right Route");
-            map.setSize(WIDTH, HEIGHT);
-            map.setResizable(false);
-            map.setLocationRelativeTo(null);
-            map.setVisible(true);
-        }
-    }
 
     private class DirectRunner
     {
