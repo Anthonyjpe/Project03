@@ -43,7 +43,7 @@ public class Truck extends Subject{
     }
 
     public double route(PriorityQueue<Address> addresses){
-       return Math.round(this.route.route(addresses,this) * 100.) / 100.;
+       return Math.round(this.route.route(addresses,this)  * .03 * 100.) / 100.;
     }
 
     public String routeTime(PriorityQueue<Address> addresses){
