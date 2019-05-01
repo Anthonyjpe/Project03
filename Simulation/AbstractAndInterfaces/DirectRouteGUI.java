@@ -63,13 +63,9 @@ public class DirectRouteGUI extends RouteGUI{
                 xVal = address.getStreetNum();
                 yVal = address.getHouseNum() / 100.0;
             }*/
-            double y = (!address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
-            double x = (address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
 
-            if(!address.isDirection()){
-                 y = (address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
-                 x = (!address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
-            }
+              double y = (address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
+              double x = (!address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
             g.fillOval(((int) x) * BLOCK_DISTANCE - 2 + (int) (40.0 * (x % 1)) + 5, ((int) y) * BLOCK_DISTANCE - 2 + (int) (40.0 * (y % 1)) + 5, MARKER_SIZE, MARKER_SIZE);
         }
 
@@ -78,7 +74,7 @@ public class DirectRouteGUI extends RouteGUI{
         g.fillRect(9 * BLOCK_DISTANCE - 2 + 5, 9 * BLOCK_DISTANCE + 2 + 5, MARKER_SIZE, MARKER_SIZE);
 
         // draw truck
-        if (x == dX && y == dY) // if the truck has reached its destination
+        if ((x == dX && y == dY) || (x == dY && y == dX)) // if the truck has reached its destination
         {
             g.setColor(red);
             g.fillOval(x * 4 - 2 + 5,y * 4 - 2 + 5, MARKER_SIZE, MARKER_SIZE);

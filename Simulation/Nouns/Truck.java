@@ -22,6 +22,7 @@ public class Truck extends Subject{
     private ArrayList<Observer> observers;
     //private SimulationRunner simRunner;
     private PriorityQueue<Address> addressList;
+    private Address center;
 
     public Truck(Neighborhood neighborhood){
         this.neighborhood = neighborhood;
@@ -33,6 +34,7 @@ public class Truck extends Subject{
         movement = new LinkedList<>();
         observers = new ArrayList<>();
         addressList = new PriorityQueue<>();
+        center = neighborhood.getDistributionCenter();
         /*try{
             simRunner = new SimulationRunner();
             registerObservers(simRunner);
@@ -160,17 +162,22 @@ public class Truck extends Subject{
         notifyObservers();
     }
 
-    public void userInput(){
+    public void userInput() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter: 1 for Direct\nEnter: 2 for Right Turn");
         int i = scanner.nextInt();
-        if(i == 2)
+        if (i == 2) {
             setRoute(new RouteRightDistance());
-        else
+            setRouteTime(new RouteRightTime());
+        } else {
             setRoute(new RouteDirectDistance());
+            setRouteTime(new RouteDirectTime());
+        }
     }
 
     public void addAddress(Address a){
         addressList.add(a);
     }
+
+    public Address returnTo(){return center;}
 }

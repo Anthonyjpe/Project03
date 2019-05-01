@@ -21,12 +21,17 @@ public class RouteDirectTime implements RouteTime {
         Direction d = truck.getDirection();
         double tickCount = 0; //Number of moves
         int partial = 0; // Stores number of moves left to reach a corner
+        addresses.add(truck.returnTo());
 
         Iterator<Address> iterator = addresses.iterator();
         while (iterator.hasNext()) {
             Address address = iterator.next();
             int dY = address.getStreetNum() * 10;
             int dX = address.getHouseNum() / 10;
+            if(address.isDirection()){
+                dX = address.getStreetNum() * 10;
+                dY = address.getHouseNum() / 10;
+            }
 
             while (x != dX || y != dY) {
 
@@ -298,7 +303,7 @@ public class RouteDirectTime implements RouteTime {
             }
         }
 
-        return tickCount / 1000;
+        return tickCount / 1000.;
 
     }
 

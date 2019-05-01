@@ -19,7 +19,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         // Write 100 random addresses to a file
-        //AddressIO.writeAddresses(AddressIO.FILE, 2); //second input is how many addresses to randomly create2
+        //AddressIO.writeAddresses(AddressIO.FILE, 1); //second input is how many addresses to randomly create2
 
         // Read the addresses from the file and place them in a PriorityQueue
         PriorityQueue<Address> addresses = AddressIO.readAddresses(AddressIO.FILE);
@@ -44,7 +44,7 @@ public class Main {
         //truck.route resets move queue (in case anything was in it) and adds moves to queue
         while(truck.canMove()) { //MUST RUN A truck.route BEFORE RUNNING GUI
             truck.move();
-            System.out.println("Truck's location: " + truck.getXLocation() + "   " + truck.getYLocation());
+           // System.out.println("Truck's location: " + truck.getXLocation() + "   " + truck.getYLocation());
         }
     }
 }

@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class Address implements Comparable<Address> {
 
-    private boolean direction; //TRUE, 1 = east, FALSE, 0 = south
+    private boolean direction; //TRUE, 1 = south, FALSE, 0 = east
     private int houseNum; //house numbers are multiples of 10, starting at 100.  However, there are no houses at the multiples of 100s, as the first house on each street would be, for example, 110.
     private int streetNum; //street numbers start at 1, and go
     protected int orderTime;
@@ -30,7 +30,7 @@ public class Address implements Comparable<Address> {
         orderTime = Integer.parseInt(time.toString());
     }
 
-    public Address(int houseNum, boolean direction, int streetNum, int orderTime) {
+    public Address(int houseNum, boolean direction, int streetNum){
         if (houseNum >= 0 && houseNum < 2000)
             this.houseNum = houseNum;
 
@@ -38,6 +38,12 @@ public class Address implements Comparable<Address> {
 
         if (streetNum >= 0 && streetNum < 20)
             this.streetNum = streetNum;
+
+        orderTime = 2359;
+    }
+
+    public Address(int houseNum, boolean direction, int streetNum, int orderTime) {
+        this(houseNum,direction,streetNum);
 
         if (orderTime >= 1000 && orderTime <= 1900)
             this.orderTime = orderTime;

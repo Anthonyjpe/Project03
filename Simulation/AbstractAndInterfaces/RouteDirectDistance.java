@@ -21,6 +21,7 @@ public class RouteDirectDistance implements RouteDistance {
         double tickCount = 0; //Number of moves
         int partial = 0; // Stores number of moves left to reach a corner
         truck.resetRoute(); //RESETS ROUTE QUEUE BEFORE ADDING TO ROUTE QUEUE
+        addresses.add(truck.returnTo());
 
         Iterator<Address> iterator = addresses.iterator();
         while (iterator.hasNext()) {
@@ -28,6 +29,10 @@ public class RouteDirectDistance implements RouteDistance {
             int dY = address.getStreetNum() * 10;
             int dX = address.getHouseNum() / 10;
             truck.addAddress(address);
+            if(address.isDirection()){
+                 dX = address.getStreetNum() * 10;
+                 dY = address.getHouseNum() / 10;
+            }
 
             while (x != dX || y != dY) {
 

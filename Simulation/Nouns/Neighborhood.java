@@ -124,6 +124,8 @@ public class Neighborhood
         }
     }
 
+    public Address getDistributionCenter(){ return new Address(DISTRIBUTION_CENTER_NUM * 10,true,DISTRIBUTION_CENTER_STREET / 10);}
+
     public int getDistributionCenterNum(){return DISTRIBUTION_CENTER_NUM;}
 
     public int getDistributionCenterStreet(){return DISTRIBUTION_CENTER_STREET;}

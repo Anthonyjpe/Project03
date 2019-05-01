@@ -32,8 +32,10 @@ public class AddressIO
                 int houseNum = Integer.parseInt(value[0]);
                 int streetNum = Integer.parseInt(value[2]);
                 int orderTime = Integer.parseInt(value[3]);
-                priorityQueue.add(new Address(houseNum, value[1].compareTo("East") == 0, streetNum, orderTime));
+                priorityQueue.add(new Address(houseNum, value[1].compareTo("South") == 0, streetNum, orderTime));
             }
+            //priorityQueue.add(new Address(910,false,9));
+
         }
         catch (IOException e)
         {
@@ -49,7 +51,6 @@ public class AddressIO
             for (int i = 0; i < numberAddresses; i++) //Added time alongside of address creation
             {
                 Address address = new Address();
-                Time time = new Time();
                 Order order = new Order();
                 writer.write(address.writeAddress() + " ");
                 writer.write(order.toString() + "\n");
