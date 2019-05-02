@@ -81,7 +81,7 @@ public class DirectRouteGUI extends RouteGUI{
         }
         else  // if the truck is still en route
         {
-            g.setColor(green);
+            g.setColor(Color.YELLOW);
             g.fillOval(x * 4 - 2 + 5, y * 4 - 2 + 5, MARKER_SIZE, MARKER_SIZE);
         }
     }

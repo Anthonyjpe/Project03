@@ -11,23 +11,28 @@ import java.util.Random;
 
 public class Address implements Comparable<Address> {
 
-    private boolean direction; //TRUE, 1 = south, FALSE, 0 = east
+    private boolean direction; //TRUE, 1 = east, FALSE, 0 = south
     private int houseNum; //house numbers are multiples of 10, starting at 100.  However, there are no houses at the multiples of 100s, as the first house on each street would be, for example, 110.
     private int streetNum; //street numbers start at 1, and go
     protected int orderTime;
+    private int orderNumber;
+
 
     private static final int PM = 1200;
     private static final int DISTRIBUTION_HOUSENUM = 910;
     private static final int DISTRIBUTION_STREETNUM = 9;
-
+    private static int orderNum = 0;
 
     protected Address() {
         Random rand = new Random();
         Time time = new Time();
-        direction = rand.nextBoolean();
+        direction = false;//rand.nextBoolean();
         houseNum = getRandomHouseNum(rand.nextInt(10));
         streetNum = getRandomStreetNum();
         orderTime = Integer.parseInt(time.toString());
+
+        orderNum++;
+        orderNumber = orderNum;
     }
 
     public Address(int houseNum, boolean direction, int streetNum){
@@ -40,6 +45,9 @@ public class Address implements Comparable<Address> {
             this.streetNum = streetNum;
 
         orderTime = 2359;
+
+        orderNum++;
+        orderNumber = orderNum;
     }
 
     public Address(int houseNum, boolean direction, int streetNum, int orderTime) {
@@ -81,7 +89,7 @@ public class Address implements Comparable<Address> {
     }
 
     public String directionToString() {
-        if (direction == false)
+        if (direction != false)
             return "South";
         else
             return "East";
@@ -111,6 +119,9 @@ public class Address implements Comparable<Address> {
 
     @Override
     public String toString() {
+        if(orderTime == 2359)
+            return "Returning to " + Integer.toString(getHouseNum()) + " " + directionToString() + " " + Integer.toString(getStreetNum());
+
         if (orderTime < PM) {// am numbers 10:00 - 11:59
             String time = Integer.toString(orderTime);
             String hour = time; hour = hour.substring(0,2);
@@ -159,10 +170,23 @@ public class Address implements Comparable<Address> {
         if (this.orderTime > o.orderTime)
             return 1;
 
+        if(this.orderNumber < o.orderNumber)
+            return -1;
+
+        if(this.orderNumber > o.orderNumber)
+            return 1;
+
         return 0;
     }
 
     public String writeAddress() {
         return Integer.toString(getHouseNum()) + " " + directionToString() + " " + Integer.toString(getStreetNum()) + " " + orderTime;
     }
+
+    public void resetOrderNum(){orderNum = 0;}
+
+    public int getOrderNumber() {
+        return orderNumber;
+    }
 }
+

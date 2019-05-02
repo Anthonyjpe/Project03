@@ -109,6 +109,10 @@ public class Truck extends Subject{
             if(xLocation == addressList.peek().getHouseNum() / 10 && yLocation == addressList.peek().getStreetNum() * 10){
                 addressList.poll();
             }
+            if(yLocation == addressList.peek().getHouseNum() / 10 && xLocation == addressList.peek().getStreetNum() * 10){
+                addressList.poll();
+            }
+
 
             switch (movement.poll()) {
                 case Up:
@@ -180,4 +184,8 @@ public class Truck extends Subject{
     }
 
     public Address returnTo(){return center;}
+
+    public PriorityQueue<Address> getPQ() {
+        return addressList;
+    }
 }

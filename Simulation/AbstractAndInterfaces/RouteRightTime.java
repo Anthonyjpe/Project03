@@ -23,9 +23,8 @@ public class RouteRightTime implements RouteTime {
         int partial = 0; // Stores number of moves left to reach a corner
         addresses.add(truck.returnTo());
 
-        Iterator<Address> iterator = addresses.iterator();
-        while (iterator.hasNext()) {
-            Address address = iterator.next();
+        while (!addresses.isEmpty()) {
+            Address address = addresses.poll();
             int dY = address.getStreetNum() * 10;
             int dX = address.getHouseNum() / 10;
             if(address.isDirection()){

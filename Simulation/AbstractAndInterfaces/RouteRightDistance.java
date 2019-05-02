@@ -24,9 +24,8 @@ public class RouteRightDistance implements RouteDistance {
         truck.resetRoute();// RESETS ROUTE QUEUE BEFORE ADDING TO ROUTE QUEUE
         addresses.add(truck.returnTo());
 
-        Iterator<Address> iterator = addresses.iterator();
-        while (iterator.hasNext()) {
-            Address address = iterator.next();
+        while (!addresses.isEmpty()) {
+            Address address = addresses.poll();
             int dY = address.getStreetNum() * 10;
             int dX = address.getHouseNum() / 10;
             truck.addAddress(address);
