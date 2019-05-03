@@ -44,13 +44,14 @@ public class Truck extends Subject{
         }*/
     }
 
-    public double route(PriorityQueue<Address> addresses){
-       return Math.round(this.route.route(addresses,this)  * .03 * 100.) / 100.;
+    public double route(LinkedList<Address> addresses){
+
+       return Math.round(this.route.route(makePQ(addresses),this)  * .03 * 100.) / 100.;
     }
 
-    public String routeTime(PriorityQueue<Address> addresses){
+    public String routeTime(LinkedList<Address> addresses){
         //double rounded to nearest tenth
-        double hours = this.routeTime.route(addresses,this);
+        double hours = this.routeTime.route(makePQ(addresses),this);
         double minutes = hours - Math.floor(hours); minutes *= 60;
         double seconds = minutes - Math.floor(minutes); seconds *= 60;
 
@@ -187,5 +188,13 @@ public class Truck extends Subject{
 
     public PriorityQueue<Address> getPQ() {
         return addressList;
+    }
+
+    private PriorityQueue<Address> makePQ(LinkedList<Address> addresses){
+        PriorityQueue<Address> addressPQ = new PriorityQueue<>();
+        for(int i = 0; i < addresses.size(); i++){
+            addressPQ.add(addresses.get(i));
+        }
+        return addressPQ;
     }
 }

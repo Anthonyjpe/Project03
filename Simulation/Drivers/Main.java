@@ -8,6 +8,7 @@ package Simulation.Drivers;
 import Simulation.Address.Address;
 import Simulation.Address.AddressIO;
 import Simulation.Nouns.Neighborhood;
+import Simulation.Nouns.OrderOfEvents;
 import Simulation.Nouns.SimulationRunner;
 import Simulation.Nouns.Truck;
 
@@ -19,15 +20,13 @@ public class Main {
 
 
     public static void main(String[] args) throws InterruptedException {
+        OrderOfEvents addresses = OrderOfEvents.getInstance();
+
         // Write 100 random addresses to a file
-<<<<<<< HEAD
         //AddressIO.writeAddresses(AddressIO.FILE, 22); //second input is how many addresses to randomly create2
-=======
-        //AddressIO.writeAddresses(AddressIO.FILE, 100); //second input is how many addresses to randomly create2
->>>>>>> b905ab746ad972b9aa02217c2b50bf74259067cf
 
         // Read the addresses from the file and place them in a PriorityQueue
-        PriorityQueue<Address> addresses = AddressIO.readAddresses(AddressIO.FILE);
+        addresses.set(AddressIO.readAddresses(AddressIO.FILE));
 
         // Draw the neighborhood with the addresses and distribution center shown
         Neighborhood neighborhood = new Neighborhood();
@@ -40,8 +39,8 @@ public class Main {
             truck.userInput();
         }
 
-        System.out.println(truck.route(addresses) + " " + truck.seeRoute());
-        System.out.println(truck.routeTime(addresses) + " " + truck.seeRouteTime());
+        System.out.println(truck.route(addresses.get()) + " " + truck.seeRoute());
+        System.out.println(truck.routeTime(addresses.get()) + " " + truck.seeRouteTime());
 
         SimulationRunner sr = new SimulationRunner();
         truck.registerObservers(sr);
