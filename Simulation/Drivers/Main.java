@@ -20,7 +20,11 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         // Write 100 random addresses to a file
+<<<<<<< HEAD
         //AddressIO.writeAddresses(AddressIO.FILE, 22); //second input is how many addresses to randomly create2
+=======
+        //AddressIO.writeAddresses(AddressIO.FILE, 100); //second input is how many addresses to randomly create2
+>>>>>>> b905ab746ad972b9aa02217c2b50bf74259067cf
 
         // Read the addresses from the file and place them in a PriorityQueue
         PriorityQueue<Address> addresses = AddressIO.readAddresses(AddressIO.FILE);
