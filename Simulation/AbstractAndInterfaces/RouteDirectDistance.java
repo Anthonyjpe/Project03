@@ -7,22 +7,26 @@ package Simulation.AbstractAndInterfaces;
 
 import Simulation.Address.Address;
 import Simulation.Enumerators.Direction;
+import Simulation.Nouns.OrderOfEvents;
 import Simulation.Nouns.Truck;
 
 import java.util.Iterator;
 import java.util.PriorityQueue;
 
 public class RouteDirectDistance implements RouteDistance {
+
+
     @Override
-    public double route(PriorityQueue<Address> addresses, Truck truck) {
+    public double route( Truck truck) {
+        OrderOfEvents order = OrderOfEvents.getInstance();
+        PriorityQueue<Address> addresses = new PriorityQueue();
         int x = truck.getXLocation();
         int y = truck.getYLocation();
         Direction d = truck.getDirection();
         double tickCount = 0; //Number of moves
         int partial = 0; // Stores number of moves left to reach a corner
         truck.resetRoute(); //RESETS ROUTE QUEUE BEFORE ADDING TO ROUTE QUEUE
-        //addresses.add(truck.returnTo());
-        addresses.add(truck.returnTo());
+        addresses = order.getPQ();
         addresses.add(truck.returnTo());
 
         while (!addresses.isEmpty()) {

@@ -39,8 +39,8 @@ public class Main {
             truck.userInput();
         }
 
-        System.out.println(truck.route(addresses.get()) + " " + truck.seeRoute());
-        System.out.println(truck.routeTime(addresses.get()) + " " + truck.seeRouteTime());
+        System.out.println(truck.route() + " " + truck.seeRoute());
+        System.out.println(truck.routeTime() + " " + truck.seeRouteTime());
 
         SimulationRunner sr = new SimulationRunner();
         truck.registerObservers(sr);

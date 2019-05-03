@@ -44,14 +44,14 @@ public class Truck extends Subject{
         }*/
     }
 
-    public double route(LinkedList<Address> addresses){
+    public double route(){
 
-       return Math.round(this.route.route(makePQ(addresses),this)  * .03 * 100.) / 100.;
+       return Math.round(this.route.route(this)  * .03 * 100.) / 100.;
     }
 
-    public String routeTime(LinkedList<Address> addresses){
+    public String routeTime(){
         //double rounded to nearest tenth
-        double hours = this.routeTime.route(makePQ(addresses),this);
+        double hours = this.routeTime.route(this);
         double minutes = hours - Math.floor(hours); minutes *= 60;
         double seconds = minutes - Math.floor(minutes); seconds *= 60;
 
