@@ -59,7 +59,7 @@ public class DirectRouteGUI extends RouteGUI{
 
         // draw distribution center
         g.setColor(new Color(255, 128, 0));
-        g.fillRect((int) (Math.floor((bound - 1.) / 2.)) * BLOCK_DISTANCE +3, (int) (Math.floor((bound - 1.)/ 2.) + 1) * BLOCK_DISTANCE + 7, MARKER_SIZE, MARKER_SIZE);
+        g.fillRect((int) (Math.floor((bound - 1.) / 2.)) * BLOCK_DISTANCE +3, (int) (Math.floor((bound - 1.)/ 2.) + 1) * BLOCK_DISTANCE - 33, MARKER_SIZE, MARKER_SIZE);
 
         // draw truck
         if ((x == dX && y == dY) || (x == dY && y == dX)) // if the truck has reached its destination
