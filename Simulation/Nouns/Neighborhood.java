@@ -15,24 +15,26 @@ import java.util.Scanner;
 
 public class Neighborhood
 {
-    private static final int NEIGHBORHOOD_DIMENSIONS = 201;
-    private static final int DISTRIBUTION_CENTER_STREET = 90;
-    private static final int DISTRIBUTION_CENTER_NUM = 91;
-
+    private int distribution_center_street;
+    private int distribution_center_num;
+    private int neighborhood_dimensions;
     private String[][] grid;
     private Truck truck[]; // multiple trucks can be owned
 
-    public Neighborhood()
+    public Neighborhood(double bound)
     {
-        grid = new String[NEIGHBORHOOD_DIMENSIONS][NEIGHBORHOOD_DIMENSIONS];
+        neighborhood_dimensions = (int) (bound * 10. + 1);
+        distribution_center_street = (int) (Math.floor((bound - 1.) / 2.) * 10);
+        distribution_center_num = (int) (Math.floor((bound - 1.)/ 2.) * 10 + 1);
+        grid = new String[neighborhood_dimensions][neighborhood_dimensions];
     }
 
-    public void generateNeighborhood()
+    private void generateNeighborhood()
     {
         // Location of houses, represented as "o"; crossroads as "-"
-        for (int x = 0; x < NEIGHBORHOOD_DIMENSIONS; x++)
+        for (int x = 0; x < neighborhood_dimensions; x++)
         {
-            for (int y = 0; y < NEIGHBORHOOD_DIMENSIONS; y++)
+            for (int y = 0; y < neighborhood_dimensions; y++)
             {
                 if (x % 10 == 0)
                 {
@@ -52,7 +54,7 @@ public class Neighborhood
         }
 
         // Location of the distribution center, represented as "&"
-        grid[91][90] = "& ";
+        grid[distribution_center_num][distribution_center_street] = "& ";
     }
 
     public String getGridMarker(int x,int y) {
@@ -83,7 +85,7 @@ public class Neighborhood
         }
 
         // Location of the distribution center, represented as "&"
-        grid[DISTRIBUTION_CENTER_NUM][DISTRIBUTION_CENTER_NUM] = "& ";
+        grid[distribution_center_num][distribution_center_street] = "& ";
 
     }
 
@@ -97,7 +99,7 @@ public class Neighborhood
             add(iterator.next());
 
         // Location of the distribution center, represented as "&"
-        grid[DISTRIBUTION_CENTER_NUM][DISTRIBUTION_CENTER_STREET] = "& ";
+        grid[distribution_center_num][distribution_center_street] = "& ";
 
     }
 
@@ -110,24 +112,24 @@ public class Neighborhood
             grid[ad.getStreetNum()*10][ad.getHouseNum()/10] = "x ";
     }
 
-    public void addTruck(Truck truck){
+    public void addTruck(Truck truck)
+    {
         this.truck[0] = truck;
     }
 
-    public void printNeighborhood()
+    public Address getDistributionCenter()
     {
-        // Print neighborhood
-        for (int x = 0; x < NEIGHBORHOOD_DIMENSIONS; x++) {
-            for (int y = 0; y < NEIGHBORHOOD_DIMENSIONS; y++)
-                System.out.print(grid[x][y]);
-            System.out.println();
-        }
+        return new Address(distribution_center_num * 10,true,distribution_center_street / 10);
     }
 
-    public Address getDistributionCenter(){ return new Address(DISTRIBUTION_CENTER_NUM * 10,true,DISTRIBUTION_CENTER_STREET / 10);}
+    public int getDistributionCenterNum()
+    {
+        return distribution_center_num;
+    }
 
-    public int getDistributionCenterNum(){return DISTRIBUTION_CENTER_NUM;}
-
-    public int getDistributionCenterStreet(){return DISTRIBUTION_CENTER_STREET;}
+    public int getDistributionCenterStreet()
+    {
+        return distribution_center_street;
+    }
 
 }

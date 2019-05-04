@@ -14,42 +14,26 @@ import java.awt.event.ActionListener;
 
 public class SimulationRunner extends JFrame implements Observer
 {
-    private static final int HEIGHT = 792, WIDTH = 771; // width and height of the window
-    private JFrame selectionWindow, map;
+    private int height, width; // width and height of the window
     private static final int SLEEP_TIME = 100;
 
     private int x, dX; // truck's current x location and x destination
     private int y, dY; // truck's current y location and y destination
+    private int bound;
     private RouteGUI gui;
-    private RouteDistance route;
 
-    public SimulationRunner() throws InterruptedException
+    public SimulationRunner(double bound) throws InterruptedException
     {
-        x = 90;
-        y = 90;
+        this.bound = (int) bound;
+        height = (int) (792 * ((bound / 20) + ((bound % 20) * 0.01))); // default height for 20x20 is 792
+        width = (int) (791 * ((bound / 20) + ((bound % 20) * 0.01)));  // default width for 20x20 is 791
+        x = (int) (Math.floor((bound - 1.) / 2.) * 10);
+        y = (int) (Math.floor((bound - 1.)/ 2.) * 10);
         popUpWindow();
     }
 
-    private void popUpWindow() throws InterruptedException{
-        selectionWindow = new JFrame();
-        selectionWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        selectionWindow.setTitle("Route Selection");
-        selectionWindow.setSize(300, 65);
-
-        JPanel panel = new JPanel();
-        JLabel choose = new JLabel("Choose a Route:");
-        panel.add(choose);
-
-        JButton directOption = new JButton("Direct");
-        directOption.addActionListener(new Event1());
-        panel.add(directOption);
-
-        selectionWindow.add(panel);
-        selectionWindow.setResizable(false);
-        selectionWindow.setLocationRelativeTo(null);
-        //selectionWindow.setVisible(true);
-
-        //new RightRunner();
+    private void popUpWindow() throws InterruptedException
+    {
         new DirectRunner();
     }
 
@@ -71,34 +55,18 @@ public class SimulationRunner extends JFrame implements Observer
         gui.start(x, y, dX, dY);
     }
 
-    private class Event1 implements ActionListener
-    {
-        public void actionPerformed(ActionEvent e)
-        {
-            //selectionWindow.setVisible(false);
-            try {
-                new DirectRunner();
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        }
-    }
-
-
-
     private class DirectRunner
     {
         private DirectRunner() throws InterruptedException
         {
-            map = new JFrame();
-            route = new RouteDirectDistance();
-            gui = new DirectRouteGUI();
+            JFrame map = new JFrame();
+            gui = new DirectRouteGUI(bound);
             map.add(gui);
             repaint();
 
             map.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            map.setTitle("Neighborhood Delivery Simulation - Direct Route");
-            map.setSize(WIDTH, HEIGHT);
+            map.setTitle("Neighborhood Delivery Simulation");
+            map.setSize(width, height);
             map.setResizable(false);
             map.setLocationRelativeTo(null);
             map.setVisible(true);

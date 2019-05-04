@@ -15,13 +15,15 @@ public class DirectRouteGUI extends RouteGUI{
     private static final int MARKER_SIZE = 5; // size of the houses and truck in the simulation
     private static final int BLOCK_DISTANCE = 40; // size of a block on the grid
 
+    private int bound; // how many streets the neighborhood has
     private static int x, dX; // truck's current x location and x destination
     private static int y, dY; // truck's current y location and y destination
     private PriorityQueue<Address> addresses = AddressIO.readAddresses(AddressIO.FILE); // read in addresses
 
-    private Color green = new Color(50, 205, 50); // color of truck when in motion
-    private Color red = new Color(205, 50, 50); // color of truck when at a stop
-    private Color orange = new Color(255, 128, 0); // color of the distribution center
+    public DirectRouteGUI(int bound)
+    {
+        this.bound = bound;
+    }
 
     @Override
     // Author: Trae Freeman
@@ -42,46 +44,32 @@ public class DirectRouteGUI extends RouteGUI{
 
        // draw streets
         g.setColor(new Color(255,255,255));
-        for (int x = 0; x < 19; x++)
-            for (int y = 0; y < 19; y++)
+        for (int x = 0; x < bound - 1; x++)
+            for (int y = 0; y < bound - 1; y++)
                 g.drawRect(BLOCK_DISTANCE * x + 5, BLOCK_DISTANCE * y + 5, BLOCK_DISTANCE, BLOCK_DISTANCE);
 
         // draw deliveries
         for (Address address : addresses)
         {
             g.setColor(new Color(0,255,255));
-
-            /*double xVal;
-            double yVal;
-            if(address.isDirection())
-            {
-                xVal = address.getHouseNum() / 100.0;
-                yVal = address.getStreetNum();
-            }
-            else
-            {
-                xVal = address.getStreetNum();
-                yVal = address.getHouseNum() / 100.0;
-            }*/
-
-              double y = (address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
-              double x = (!address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
+            double y = (address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
+            double x = (!address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
             g.fillOval(((int) x) * BLOCK_DISTANCE - 2 + (int) (40.0 * (x % 1)) + 5, ((int) y) * BLOCK_DISTANCE - 2 + (int) (40.0 * (y % 1)) + 5, MARKER_SIZE, MARKER_SIZE);
         }
 
         // draw distribution center
-        g.setColor(orange);
-        g.fillRect(9 * BLOCK_DISTANCE - 2 + 5, 9 * BLOCK_DISTANCE + 2 + 5, MARKER_SIZE, MARKER_SIZE);
+        g.setColor(new Color(255, 128, 0));
+        g.fillRect((int) (Math.floor((bound - 1.) / 2.)) * BLOCK_DISTANCE +3, (int) (Math.floor((bound - 1.)/ 2.) + 1) * BLOCK_DISTANCE + 7, MARKER_SIZE, MARKER_SIZE);
 
         // draw truck
         if ((x == dX && y == dY) || (x == dY && y == dX)) // if the truck has reached its destination
         {
-            g.setColor(red);
+            g.setColor(new Color(205, 50, 50));
             g.fillOval(x * 4 - 2 + 5,y * 4 - 2 + 5, MARKER_SIZE, MARKER_SIZE);
         }
         else  // if the truck is still en route
         {
-            g.setColor(Color.YELLOW);
+            g.setColor(new Color(255,255,0));
             g.fillOval(x * 4 - 2 + 5, y * 4 - 2 + 5, MARKER_SIZE, MARKER_SIZE);
         }
     }

@@ -17,10 +17,10 @@ public class Address implements Comparable<Address> {
     protected int orderTime;
     private int orderNumber;
 
-
     private static final int PM = 1200;
-    private static final int DISTRIBUTION_HOUSENUM = 910;
-    private static final int DISTRIBUTION_STREETNUM = 9;
+    private static int distribution_housenum;
+    private static int distribution_streetnum;
+    private static int bound;
     private static int orderNum = 0;
 
     protected Address() {
@@ -66,8 +66,22 @@ public class Address implements Comparable<Address> {
         return r.nextInt((max - min) + 1) + min;
     }
 
-    public int getRandomHouseNum(int rand) {
-        int n = getRandomNumberInRange(0, 19);
+    /*
+     * Author: Jonah Beers
+     */
+    public static void setBound(int newBound)
+    {
+        bound = newBound;
+        distribution_streetnum = bound / 2;
+        distribution_housenum = (bound / 2) * 10 + 10;
+    }
+
+    /*
+     * Author: Jonah Beers
+     */
+    public int getRandomHouseNum(int rand)
+    {
+        int n = getRandomNumberInRange(0, bound - 1);
 
         n = n * 100;
 
@@ -78,11 +92,14 @@ public class Address implements Comparable<Address> {
         return n;
     }
 
-    public int getRandomStreetNum() {
-        int n = getRandomNumberInRange(0, 20);
+    /*
+     * Author: Jonah Beers
+     */
+    public int getRandomStreetNum()
+    {
+        int n = getRandomNumberInRange(0, bound);
         return n;
     }
-
 
     public boolean isDirection() {
         return direction;
@@ -95,30 +112,30 @@ public class Address implements Comparable<Address> {
             return "East";
     }
 
-    public int getHouseNum() {
+    public int getHouseNum()
+    {
         return houseNum;
     }
 
-    public int getStreetNum() {
+    public int getStreetNum()
+    {
         return streetNum;
     }
 
-    public double distance() {
-        /*   if(!direction)
-            return Math.sqrt(Math.pow(DISTRIBUTION_HOUSENUM - (streetNum * 100), 2) + Math.pow((DISTRIBUTION_STREETNUM * 100) - houseNum, 2));
-
-        return Math.sqrt(Math.pow(DISTRIBUTION_HOUSENUM - houseNum,2) + Math.pow((DISTRIBUTION_STREETNUM * 100) - (streetNum * 100),2));
-
-        */ // BAsed on actual line distance rather than actual time distance
-        if (direction) {
-            return Math.abs(DISTRIBUTION_HOUSENUM - houseNum) + Math.abs((DISTRIBUTION_STREETNUM * 100) - (streetNum * 100));
+    public double distance()
+    {
+        // Based on actual line distance rather than actual time distance
+        if (direction)
+        {
+            return Math.abs(distribution_housenum - houseNum) + Math.abs((distribution_streetnum * 100) - (streetNum * 100));
         }
 
-        return Math.abs(DISTRIBUTION_HOUSENUM - (streetNum * 100)) + Math.abs((DISTRIBUTION_STREETNUM * 100) - houseNum);
+        return Math.abs(distribution_housenum - (streetNum * 100)) + Math.abs((distribution_streetnum * 100) - houseNum);
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         if(orderTime == 2359)
             return "Returning to " + Integer.toString(getHouseNum()) + " " + directionToString() + " " + Integer.toString(getStreetNum());
 
