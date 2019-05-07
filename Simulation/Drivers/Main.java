@@ -8,6 +8,7 @@ package Simulation.Drivers;
 import Simulation.Address.Address;
 import Simulation.Address.AddressIO;
 import Simulation.Nouns.Neighborhood;
+import Simulation.Nouns.OrderOfEvents;
 import Simulation.Nouns.SimulationRunner;
 import Simulation.Nouns.Truck;
 
@@ -29,12 +30,20 @@ public class Main {
         Address.setBound(bound);
 
         // Write 100 random addresses to a file
-        AddressIO.writeAddresses(AddressIO.FILE, 10); //second input is how many addresses to randomly create2
+        //AddressIO.writeAddresses(AddressIO.FILE, 10); //second input is how many addresses to randomly create2
 
         // Read the addresses from the file and place them in a PriorityQueue
-        PriorityQueue<Address> addresses = AddressIO.readAddresses(AddressIO.FILE);
+       /* PriorityQueue<Address> addresses = AddressIO.readAddresses(AddressIO.FILE);
         for(Address address : addresses)
             System.out.println(address);
+*/
+        OrderOfEvents addresses = OrderOfEvents.getInstance();
+
+        // Write 100 random addresses to a file
+        AddressIO.writeAddresses(AddressIO.FILE, 22); //second input is how many addresses to randomly create2
+
+        // Read the addresses from the file and place them in a PriorityQueue
+        addresses.set(AddressIO.readAddresses(AddressIO.FILE));
 
         // Draw the neighborhood with the addresses and distribution center shown
         Neighborhood neighborhood = new Neighborhood(bound);
@@ -46,9 +55,19 @@ public class Main {
             System.out.println("Letter or word was entered, Please enter a 1 or 2.");
             truck.userInput();
         }
+        // Draw the neighborhood with the addresses and distribution center shown
+        /*Neighborhood neighborhood = new Neighborhood(bound);
+        Truck truck = new Truck(neighborhood);
 
-        System.out.println(truck.route(addresses) + " " + truck.seeRoute());
-        System.out.println(truck.routeTime(addresses) + " " + truck.seeRouteTime());
+        try {
+            truck.userInput();
+        } catch (InputMismatchException e) {
+            System.out.println("Letter or word was entered, Please enter a 1 or 2.");
+            truck.userInput();
+        }*/
+
+        System.out.println(truck.route() + " " + truck.seeRoute());
+        System.out.println(truck.routeTime() + " " + truck.seeRouteTime());
 
         // Read in how many blocks to view in the simulation
         SimulationRunner sr = new SimulationRunner(bound);

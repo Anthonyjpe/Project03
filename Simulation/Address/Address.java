@@ -26,7 +26,7 @@ public class Address implements Comparable<Address> {
     protected Address() {
         Random rand = new Random();
         Time time = new Time();
-        direction = false;//rand.nextBoolean();
+        direction = rand.nextBoolean();
         houseNum = getRandomHouseNum(rand.nextInt(10));
         streetNum = getRandomStreetNum();
         orderTime = Integer.parseInt(time.toString());
