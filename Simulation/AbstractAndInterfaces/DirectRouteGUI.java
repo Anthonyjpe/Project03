@@ -10,6 +10,7 @@ import Simulation.Address.AddressIO;
 import Simulation.Nouns.OrderOfEvents;
 
 import java.awt.*;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 public class DirectRouteGUI extends RouteGUI{
@@ -20,11 +21,17 @@ public class DirectRouteGUI extends RouteGUI{
     private int bound; // how many streets the neighborhood has
     private static int x, dX; // truck's current x location and x destination
     private static int y, dY; // truck's current y location and y destination
-    private PriorityQueue<Address> addresses = AddressIO.readAddresses(AddressIO.FILE); // read in addresses
+    private PriorityQueue<Address> addresses = OrderOfEvents.getInstance().getPQ(); // read in addresses
+    private static LinkedList<Address> completedAddresses = new LinkedList<>();
 
     public DirectRouteGUI(int bound)
     {
         this.bound = bound;
+    }
+
+    public static void addCompletedOrder(Address address)
+    {
+        completedAddresses.add(address);
     }
 
     @Override
@@ -56,6 +63,8 @@ public class DirectRouteGUI extends RouteGUI{
             g.setColor(new Color(0,255,255));
             double y = (address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
             double x = (!address.isDirection()) ? address.getHouseNum() / 100.0 : address.getStreetNum();
+            if(completedAddresses.contains(address))
+                g.setColor(new Color(255,0,150));
             g.fillOval(((int) x) * BLOCK_DISTANCE - 2 + (int) (40.0 * (x % 1)) + 5, ((int) y) * BLOCK_DISTANCE - 2 + (int) (40.0 * (y % 1)) + 5, MARKER_SIZE, MARKER_SIZE);
         }
 

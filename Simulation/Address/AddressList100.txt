@@ -1,4 +1,4 @@
-1910 East 1 1408 Wrap, Turkey, Cheese, Turkey, Lettuce, Mayonnaise $8.25 Time:320
-820 South 8 1555 Roll, Lettuce, Tomato, Lettuce, Mayonnaise $5.775 Time:275
-670 East 18 1728 Wrap, Tomato, Lettuce, Mayonnaise, Turkey $6.6 Time:270
-690 South 15 1642 Roll, Mustard, Turkey, Cheese, Tomato $6.325 Time:315
+570 South 0 1900 Wrap, Ham $4.95 Time:210
+1580 South 14 1402 Roll $3.85 Time:185
+530 South 15 1350 Roll, Lettuce, Ham, Mayonnaise, Tomato, Cheese $7.975 Time:315
+1360 East 6 1423 Wrap, Cheese, Lettuce, Mayonnaise, Ham $7.975 Time:300
