@@ -6,7 +6,7 @@ public class SandwichMaker {
         Bread sand1 = new Roll();
        // System.out.println(sand1.getDescription() + " $" + sand1.cost() + " Time:" + sand1.timeNeeded());
 
-        Bread sand2 = new Roll();
+        Bread sand2 = new Wrap();
         sand2 = new Ham(sand2);
         sand2 = new Turkey(sand2);
         sand2 = new Cheese(sand2);

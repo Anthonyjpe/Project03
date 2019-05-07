@@ -4,6 +4,10 @@ public class Mayonnaise extends BreadDecorator {
 
     Bread bread;
 
+    public Mayonnaise(Bread bread){
+        this.bread = bread;
+    }
+
     public String getDescription() {
         return bread.getDescription() + ", Mayonnaise";
     }

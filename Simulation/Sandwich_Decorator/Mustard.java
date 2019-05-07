@@ -3,6 +3,10 @@ package Simulation.Sandwich_Decorator;
 public class Mustard extends BreadDecorator {
     Bread bread;
 
+    public Mustard(Bread bread){
+        this.bread = bread;
+    }
+
     public String getDescription() {
         return bread.getDescription() + ", Mustard";
     }

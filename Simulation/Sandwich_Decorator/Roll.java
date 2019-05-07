@@ -6,7 +6,7 @@ public class Roll extends Bread {
 
     public Roll(){
         description = "Roll";
-        this.bread = bread;
+        this.bread = this;
     }
 
     public double cost() {
@@ -18,12 +18,13 @@ public class Roll extends Bread {
         return 60;
     }
 
-    @Override
+
     public double getTax()
     {
         return (this.cost() * .10) + this.cost();
     }
 
+    @Override
     public String toString(){
         return bread.getDescription() + " $:" + getTax() + " Time:" + timeNeeded();
     }

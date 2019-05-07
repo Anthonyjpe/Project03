@@ -8,7 +8,7 @@ public class Wrap extends Bread {
 
     public Wrap(){
         description = "Wrap";
-        this.bread = bread;
+        this.bread = this;
     }
 
     public double cost() { return 0.50; }

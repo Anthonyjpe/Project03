@@ -3,7 +3,7 @@ package Simulation.Sandwich_Decorator;
 public class Lettuce extends BreadDecorator {
     Bread bread;
 
-    public Lettuce(){
+    public Lettuce(Bread bread){
         this.bread = bread;
     }
 
