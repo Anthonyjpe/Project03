@@ -25,6 +25,6 @@ public class Roll extends Bread {
     }
 
     public String toString(){
-        return bread.getDescription() + " $" + getTax() + " Time:" + timeNeeded();
+        return bread.getDescription() + " $:" + getTax() + " Time:" + timeNeeded();
     }
 }

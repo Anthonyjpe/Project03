@@ -1,11 +1,11 @@
 /*
- * Drinks
+ * Chips
  * Author: Trae Freeman
  * Last Updated: Sprint04
  */
 package Simulation.Enumerators;
 
-public enum Drinks {
+public enum BreadTypes {
 
-    D1,D2,D3
+    Roll, Wrap
 }

@@ -5,7 +5,7 @@
  */
 package Simulation.Enumerators;
 
-public enum Sandwiches {
+public enum SandwichAddons {
 
-    S1, S2, S3
+    Cheese, Lettuce, Mayonnaise, Mustard, Tomato, Turkey, Ham
 }

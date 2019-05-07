@@ -5,57 +5,56 @@
  */
 package Simulation.Nouns;
 
-import Simulation.Enumerators.Chips;
-import Simulation.Enumerators.Drinks;
-import Simulation.Enumerators.Sandwiches;
+import Simulation.Enumerators.BreadTypes;
+import Simulation.Enumerators.SandwichAddons;
+import Simulation.Sandwich_Decorator.Bread;
+import Simulation.Sandwich_Decorator.Roll;
+import Simulation.Sandwich_Decorator.Wrap;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-public class Order {
+public class Order extends Bread{
 
-    Sandwiches sandwich;
-    Chips chip;
-    Drinks drink;
+    Bread breadType;
+    BreadTypes breadInitial; //roll or wrap
+    ArrayList toppingsList; //includes meat
 
     static Random rand = new Random();
 
     public Order(){
-        sandwich = randomEnum(Sandwiches.class);
-        chip = randomEnum(Chips.class);
-        drink = randomEnum(Drinks.class);
+        breadInitial = randomEnum(BreadTypes.class);
+        switch (breadInitial){
+            case Wrap:
+                breadType = new Wrap();
+
+            case Roll:
+                breadType = new Roll();
+        }
+        for (int i = 0; i > getRandomNumOfTopping(); i++)
+            toppingsList.add(getRandomTopping());
     }
 
-    public Sandwiches getSandwich() {
-        return sandwich;
+    public Bread getBreadType() {
+        return breadType;
     }
 
-    public void setSandwich(Sandwiches sandwich) {
-        this.sandwich = sandwich;
+    public void Bread(Bread bread) {
+        this.breadType = bread;
     }
 
-    public void setChips(Chips chips) {
-        this.chip = chips;
+
+    public int getRandomNumOfTopping(){
+        return rand.nextInt(20);
     }
 
-    public Drinks getDrink() {
-        return drink;
+    public SandwichAddons getRandomTopping(){
+        return randomEnum(SandwichAddons.class);
     }
 
-    public void setDrink(Drinks drink) {
-        this.drink = drink;
-    }
-
-    public Chips getChips() {
-        return chip;
-    }
 
     public static <T extends Enum<?>> T randomEnum(Class<T> clazz){
         int x = rand.nextInt(clazz.getEnumConstants().length);
         return clazz.getEnumConstants() [x];
-    }
-
-    @Override
-    public String toString() {
-        return sandwich + " " + chip + " " + drink;
     }
 }
