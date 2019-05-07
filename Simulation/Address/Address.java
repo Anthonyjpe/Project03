@@ -5,6 +5,7 @@
  */
 package Simulation.Address;
 
+import Simulation.Nouns.Order;
 import Simulation.Nouns.Time;
 
 import java.util.Random;
@@ -22,6 +23,7 @@ public class Address implements Comparable<Address> {
     private static int distribution_streetnum;
     private static int bound;
     private static int orderNum = 0;
+    private Order order;
 
     protected Address() {
         Random rand = new Random();
@@ -204,6 +206,15 @@ public class Address implements Comparable<Address> {
 
     public int getOrderNumber() {
         return orderNumber;
+    }
+
+    public Order getOrder()
+    {
+        return order;
+    }
+
+    public void addOrder(Order order){
+        this.order = order;
     }
 }
 

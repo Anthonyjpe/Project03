@@ -25,8 +25,8 @@ public class SimulationRunner extends JFrame implements Observer
     public SimulationRunner(double bound) throws InterruptedException
     {
         this.bound = (int) bound;
-        height = (int) (792 * ((bound / 20) + ((bound % 20) * 0.01))); // default height for 20x20 is 792
-        width = (int) (791 * ((bound / 20) + ((bound % 20) * 0.01)));  // default width for 20x20 is 791
+        height = (int) (792 * bound / 20); // default height for 20x20 is 792
+        width = (int) (791 * bound / 20 - 20);  // default width for 20x20 is 791
         x = (int) (Math.floor((bound - 1.) / 2.) * 10);
         y = (int) (Math.floor((bound - 1.)/ 2.) * 10);
         popUpWindow();

@@ -108,10 +108,10 @@ public class Truck extends Subject{
     {
         if(!movement.isEmpty()) {
             if(xLocation == addressList.peek().getHouseNum() / 10 && yLocation == addressList.peek().getStreetNum() * 10){
-                addressList.poll();
+                System.out.println(addressList.poll().getOrder().breadType.toString());
             }
             if(yLocation == addressList.peek().getHouseNum() / 10 && xLocation == addressList.peek().getStreetNum() * 10){
-                addressList.poll();
+                System.out.println(addressList.poll().getOrder().breadType.toString());
             }
 
 

@@ -1,22 +1,4 @@
-1290 East 19 1322 S1 C2 D3
-1170 East 9 1900 S1 C2 D2
-190 South 3 1900 S3 C1 D3
-10 East 6 1900 S1 C2 D3
-1730 East 12 1318 S1 C2 D1
-1570 South 8 1052 S2 C2 D3
-950 South 0 1328 S2 C1 D3
-910 East 11 1443 S1 C1 D3
-210 East 0 1603 S1 C2 D1
-520 South 10 1455 S2 C2 D3
-190 South 3 1627 S3 C2 D2
-970 South 2 1609 S1 C1 D1
-1040 South 5 1657 S1 C1 D2
-1610 East 1 1429 S1 C2 D3
-1090 South 8 1625 S2 C2 D1
-520 East 1 1418 S3 C1 D3
-410 East 9 1544 S1 C2 D1
-40 South 1 1900 S1 C2 D2
-420 East 5 1156 S1 C1 D2
-420 East 2 1455 S3 C1 D3
-1640 South 12 1641 S2 C1 D1
-370 South 10 1032 S1 C2 D1
+1150 South 5 1121 Wrap, Turkey, Turkey, Mayonnaise $6.325 Time:195
+1240 South 13 1357 Roll, Turkey, Mayonnaise, Mustard, Lettuce, Turkey $6.05 Time:230
+1160 South 11 1557 Wrap, Mustard $2.2 Time:135
+1260 South 7 1009 Wrap, Lettuce, Cheese, Mayonnaise, Mustard, Cheese, Cheese $5.5 Time:305

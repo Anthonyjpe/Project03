@@ -33,8 +33,8 @@ public class OrderOfEvents {
         }
     }
 
-    public LinkedList<Address> get(){
-        return addresses;
+    public void addOrder(int i,Order order){
+        addresses.get(i).addOrder(order);
     }
 
     public PriorityQueue<Address> getPQ(){
