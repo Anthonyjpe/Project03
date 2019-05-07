@@ -11,11 +11,11 @@ public class Wrap extends Bread {
         this.bread = this;
     }
 
-    public double cost() { return 0.50; }
+    public double cost() { return 1.75; }
 
     @Override
     public int timeNeeded() {
-        return 75;
+        return 150;
     }
 
     @Override

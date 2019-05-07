@@ -10,12 +10,12 @@ public class Roll extends Bread {
     }
 
     public double cost() {
-        return 0.75;
+        return 2.00;
     }
 
     public int timeNeeded()
     {
-        return 60;
+        return 155;
     }
 
 
