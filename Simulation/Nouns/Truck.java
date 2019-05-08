@@ -109,14 +109,14 @@ public class Truck extends Subject{
             if(xLocation == addressList.peek().getHouseNum() / 10 && yLocation == addressList.peek().getStreetNum() * 10){
                 Address address = addressList.poll();
                 DirectRouteGUI.addCompletedOrder(address);
-                if(addressList.size() > 1)
+                if(addressList.size() >= 1)
                 System.out.println(address.getOrder().breadType.toString());
                 Thread.sleep(750);
             }
             if(yLocation == addressList.peek().getHouseNum() / 10 && xLocation == addressList.peek().getStreetNum() * 10){
                 Address address = addressList.poll();
                 DirectRouteGUI.addCompletedOrder(address);
-                if (addressList.size() > 1)
+                if (addressList.size() >= 1)
                 System.out.println(address.getOrder().breadType.toString());
                 Thread.sleep(750);
             }
