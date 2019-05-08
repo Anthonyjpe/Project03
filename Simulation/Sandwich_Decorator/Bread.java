@@ -16,7 +16,4 @@ public abstract class Bread {
 
     public abstract String toString();
 
-
-    //add methods to cover, bag, and tax e/ cost of a sandwich
-
 }

@@ -9,19 +9,15 @@ import java.util.ArrayList;
 
 abstract class Subject {
 
-    //array of observers; neighborhood into observer
+    // array of observers; neighborhood into observer
     private ArrayList<Observer> observers;
 
-    public void notifyObservers() {
-        //for each in array call update
-    }
+    public void notifyObservers()
+    { }
 
     public void registerObservers(Observer o) //Observer put into the array of observers
-    {
+    { }
 
-    }
-
-    public void removeObservers(Observer o) {
-
-    }
+    public void removeObservers(Observer o)
+    { }
 }

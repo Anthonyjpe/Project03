@@ -9,32 +9,30 @@ import Simulation.Address.Address;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class Neighborhood
 {
-    private int distribution_center_street;
-    private int distribution_center_num;
-    private int neighborhood_dimensions;
+    private int distributionCenterStreet;
+    private int distributionCenterNum;
+    private int neighborhoodDimensions;
     private String[][] grid;
     private Truck truck[]; // multiple trucks can be owned
 
     public Neighborhood(double bound)
     {
-        neighborhood_dimensions = (int) (bound * 10. + 1);
-        distribution_center_street = (int) (Math.floor((bound - 1.) / 2.) * 10);
-        distribution_center_num = (int) (Math.floor((bound - 1.)/ 2.) * 10 + 1);
-        grid = new String[neighborhood_dimensions][neighborhood_dimensions];
+        neighborhoodDimensions = (int) (bound * 10. + 1);
+        distributionCenterStreet = (int) (Math.floor((bound - 1.) / 2.) * 10);
+        distributionCenterNum = (int) (Math.floor((bound - 1.)/ 2.) * 10 + 1);
+        grid = new String[neighborhoodDimensions][neighborhoodDimensions];
     }
 
     private void generateNeighborhood()
     {
         // Location of houses, represented as "o"; crossroads as "-"
-        for (int x = 0; x < neighborhood_dimensions; x++)
+        for (int x = 0; x < neighborhoodDimensions; x++)
         {
-            for (int y = 0; y < neighborhood_dimensions; y++)
+            for (int y = 0; y < neighborhoodDimensions; y++)
             {
                 if (x % 10 == 0)
                 {
@@ -54,7 +52,7 @@ public class Neighborhood
         }
 
         // Location of the distribution center, represented as "&"
-        grid[distribution_center_num][distribution_center_street] = "& ";
+        grid[distributionCenterNum][distributionCenterStreet] = "& ";
     }
 
     public String getGridMarker(int x,int y) {
@@ -85,21 +83,7 @@ public class Neighborhood
         }
 
         // Location of the distribution center, represented as "&"
-        grid[distribution_center_num][distribution_center_street] = "& ";
-
-    }
-
-    public void generateNeighborhood(PriorityQueue<Address> addresses)
-    {
-        generateNeighborhood();
-
-        // Add locations to neighborhood map
-        Iterator<Address> iterator = addresses.iterator();
-        while (iterator.hasNext())
-            add(iterator.next());
-
-        // Location of the distribution center, represented as "&"
-        grid[distribution_center_num][distribution_center_street] = "& ";
+        grid[distributionCenterNum][distributionCenterStreet] = "& ";
 
     }
 
@@ -119,17 +103,17 @@ public class Neighborhood
 
     public Address getDistributionCenter()
     {
-        return new Address(distribution_center_num * 10,true,distribution_center_street / 10);
+        return new Address(distributionCenterNum * 10,true,distributionCenterStreet / 10);
     }
 
     public int getDistributionCenterNum()
     {
-        return distribution_center_num;
+        return distributionCenterNum;
     }
 
     public int getDistributionCenterStreet()
     {
-        return distribution_center_street;
+        return distributionCenterStreet;
     }
 
 }

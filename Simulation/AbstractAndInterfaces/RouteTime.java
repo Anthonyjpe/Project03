@@ -5,11 +5,8 @@
  */
 package Simulation.AbstractAndInterfaces;
 
-import Simulation.Address.Address;
 import Simulation.Nouns.Truck;
 
-import java.util.PriorityQueue;
-
 public interface RouteTime {
-    public double route(Truck truck);
+    double route(Truck truck);
 }

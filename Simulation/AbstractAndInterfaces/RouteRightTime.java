@@ -9,8 +9,6 @@ import Simulation.Address.Address;
 import Simulation.Enumerators.Direction;
 import Simulation.Nouns.OrderOfEvents;
 import Simulation.Nouns.Truck;
-
-import java.util.Iterator;
 import java.util.PriorityQueue;
 
 public class RouteRightTime implements RouteTime {

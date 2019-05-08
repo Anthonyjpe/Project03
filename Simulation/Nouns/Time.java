@@ -8,8 +8,8 @@ package Simulation.Nouns;
 import java.util.Random;
 
 public class Time { //REMEMBER: This is Military time; meaning deliveries are from 1000 - 1900
-    int hour; //make toString give AM/PM depending on hour
-    int minute;
+    private int hour; //make toString give AM/PM depending on hour
+    private int minute;
 
     private int getRandomNumberInRange(int min, int max){
         if (min >= max){
@@ -26,37 +26,30 @@ public class Time { //REMEMBER: This is Military time; meaning deliveries are fr
             minute = getRandomMinute();
     }
 
-    protected int getRandomHour(){
+    private int getRandomHour(){
         int x;
         x = getRandomNumberInRange(0, 9);
         return x * 100;
     }
 
-    protected int getRandomMinute(){
+    private int getRandomMinute(){
         int x;
         x = getRandomNumberInRange(0, 59);
         return x;
     }
 
-    public int getHour() {
+    private int getHour() {
         return hour;
     }
 
-    public int getMinute() {
+    private int getMinute() {
         return minute;
     }
 
     @Override
     public String toString(){
         int milTime = 1000;
-
         milTime = milTime + getHour() + getMinute();
-
         return (Integer.toString(milTime));
-
-
-
     }
-
-
 }

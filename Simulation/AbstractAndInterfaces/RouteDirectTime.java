@@ -9,8 +9,6 @@ import Simulation.Address.Address;
 import Simulation.Enumerators.Direction;
 import Simulation.Nouns.OrderOfEvents;
 import Simulation.Nouns.Truck;
-
-import java.util.Iterator;
 import java.util.PriorityQueue;
 
 public class RouteDirectTime implements RouteTime {
@@ -59,9 +57,7 @@ public class RouteDirectTime implements RouteTime {
                             tickCount++;
                             x--;
                         }
-
                 }
-
 
                 if(d == Direction.Null){
                     d = Direction.North;
@@ -305,9 +301,7 @@ public class RouteDirectTime implements RouteTime {
                 }
             }
         }
-
         return tickCount / 1000.;
-
     }
 
     public String toString() { return "hours with Direct route"; }

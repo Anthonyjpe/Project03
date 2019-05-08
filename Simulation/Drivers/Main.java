@@ -1,6 +1,6 @@
 /*
  * Driver for calculating time/distance
- * Author: Anthony Estephan
+ * Author: Anthony Estephan and Jonah Beers
  * Last Updated: Sprint04
  */
 package Simulation.Drivers;
@@ -10,7 +10,6 @@ import Simulation.Address.AddressIO;
 import Simulation.Nouns.*;
 
 import java.util.InputMismatchException;
-import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class Main {
@@ -26,16 +25,11 @@ public class Main {
         }
         Address.setBound(bound);
 
-        int addressAmount = 4;
-
         // Write 100 random addresses to a file
-        AddressIO.writeAddresses(AddressIO.FILE, addressAmount); //second input is how many addresses to randomly create2
+        int addressAmount = 3;
+        // AddressIO.writeAddresses(AddressIO.FILE, addressAmount); //second input is how many addresses to randomly create2
 
-        // Read the addresses from the file and place them in a PriorityQueue
-       /* PriorityQueue<Address> addresses = AddressIO.readAddresses(AddressIO.FILE);
-        for(Address address : addresses)
-            System.out.println(address);*/
-
+        // Get addresses from OrderOfEvents
         OrderOfEvents addresses = OrderOfEvents.getInstance();
 
         // Read the addresses from the file and place them in a PriorityQueue
@@ -63,7 +57,8 @@ public class Main {
         truck.registerObservers(sr);
 
         //truck.route resets move queue (in case anything was in it) and adds moves to queue
-        while(truck.canMove()) { //MUST RUN A truck.route BEFORE RUNNING GUI
+        while(truck.canMove()) //MUST RUN A truck.route BEFORE RUNNING GUI
+        {
             truck.move();
         }
 

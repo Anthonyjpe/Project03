@@ -38,10 +38,6 @@ public class OrderOfEvents {
     }
 
     public PriorityQueue<Address> getPQ(){
-        PriorityQueue<Address> addressPQ = new PriorityQueue<>();
-        for(int i = 0; i < addresses.size(); i++){
-            addressPQ.add(addresses.get(i));
-        }
-        return addressPQ;
+        return new PriorityQueue<>(addresses);
     }
 }

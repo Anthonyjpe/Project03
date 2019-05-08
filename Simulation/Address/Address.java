@@ -15,7 +15,7 @@ public class Address implements Comparable<Address> {
     private boolean direction; //TRUE, 1 = east, FALSE, 0 = south
     private int houseNum; //house numbers are multiples of 10, starting at 100.  However, there are no houses at the multiples of 100s, as the first house on each street would be, for example, 110.
     private int streetNum; //street numbers start at 1, and go
-    protected int orderTime;
+    private int orderTime;
     private int orderNumber;
 
     private static final int PM = 1200;
@@ -84,9 +84,7 @@ public class Address implements Comparable<Address> {
     public int getRandomHouseNum(int rand)
     {
         int n = getRandomNumberInRange(0, bound - 1);
-
         n = n * 100;
-
         n = n + (rand * 10);
 
         if (n % 100 == 0 || n == 0)
@@ -97,18 +95,17 @@ public class Address implements Comparable<Address> {
     /*
      * Author: Jonah Beers
      */
-    public int getRandomStreetNum()
+    private int getRandomStreetNum()
     {
-        int n = getRandomNumberInRange(0, bound);
-        return n;
+        return getRandomNumberInRange(0, bound);
     }
 
     public boolean isDirection() {
         return direction;
     }
 
-    public String directionToString() {
-        if (direction != false)
+    private String directionToString() {
+        if (direction)
             return "South";
         else
             return "East";
@@ -124,7 +121,7 @@ public class Address implements Comparable<Address> {
         return streetNum;
     }
 
-    public double distance()
+    private double distance()
     {
         // Based on actual line distance rather than actual time distance
         if (direction)
@@ -198,14 +195,8 @@ public class Address implements Comparable<Address> {
         return 0;
     }
 
-    public String writeAddress() {
+    String writeAddress() {
         return Integer.toString(getHouseNum()) + " " + directionToString() + " " + Integer.toString(getStreetNum()) + " " + orderTime;
-    }
-
-    public void resetOrderNum(){orderNum = 0;}
-
-    public int getOrderNumber() {
-        return orderNumber;
     }
 
     public Order getOrder()

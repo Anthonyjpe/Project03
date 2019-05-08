@@ -9,15 +9,12 @@ import Simulation.Address.Address;
 import Simulation.Enumerators.Direction;
 import Simulation.Nouns.OrderOfEvents;
 import Simulation.Nouns.Truck;
-
-import java.util.Iterator;
 import java.util.PriorityQueue;
 
 public class RouteDirectDistance implements RouteDistance {
 
-
     @Override
-    public double route( Truck truck) {
+    public double route(Truck truck) {
         OrderOfEvents order = OrderOfEvents.getInstance();
         PriorityQueue<Address> addresses = new PriorityQueue();
         int x = truck.getXLocation();

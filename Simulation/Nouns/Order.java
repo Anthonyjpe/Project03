@@ -15,10 +15,9 @@ import java.util.Random;
 public class Order{
 
     Bread breadType;
-    BreadTypes breadInitial; //roll or wrap
-    ArrayList toppingsList; //includes meat
-
-    static Random rand = new Random();
+    private BreadTypes breadInitial; //roll or wrap
+    private ArrayList toppingsList; //includes meat
+    private static Random rand = new Random();
 
     public Order(){
         toppingsList = new ArrayList();
@@ -57,30 +56,23 @@ public class Order{
                     break;
 
             }
-
         }
-
-    }
-
-    public Bread getBreadType() {
-        return breadType;
     }
 
     public void Bread(Bread bread) {
         this.breadType = bread;
     }
 
-
-    public int getRandomNumOfTopping(){
+    private int getRandomNumOfTopping(){
         return rand.nextInt(20);
     }
 
-    public SandwichAddons getRandomTopping(){
+    private SandwichAddons getRandomTopping(){
         return randomEnum(SandwichAddons.class);
     }
 
 
-    public static <T extends Enum<?>> T randomEnum(Class<T> clazz){
+    private static <T extends Enum<?>> T randomEnum(Class<T> clazz){
         int x = rand.nextInt(clazz.getEnumConstants().length);
         return clazz.getEnumConstants() [x];
     }

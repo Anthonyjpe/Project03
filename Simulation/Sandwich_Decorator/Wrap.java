@@ -1,8 +1,5 @@
 package Simulation.Sandwich_Decorator;
 
-
-import java.io.BufferedReader;
-
 public class Wrap extends Bread {
     Bread bread;
 
