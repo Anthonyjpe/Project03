@@ -1,3 +1,8 @@
+/*
+ * Truck
+ * Author: Trae Freeman
+ * Last Updated: Sprint04
+ */
 package Simulation.Sandwich_Decorator;
 
 public class Tomato extends BreadDecorator{
